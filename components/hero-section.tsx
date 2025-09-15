@@ -21,7 +21,7 @@ export function HeroSection() {
           </h1>
 
           <p className="text-xl md:text-2xl text-muted-foreground text-pretty mb-8 max-w-3xl mx-auto leading-relaxed">
-            Clareza executável, método comprovado e resultados mensuráveis — com pessoas no centro.
+            Clareza estratégica, execução efetiva, resultados mensuráveis e pessoas no centro.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
