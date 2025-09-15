@@ -71,7 +71,7 @@ export function Footer() {
         </div>
 
         <div className="border-t border-border mt-8 pt-8 text-center">
-          <p className="text-muted-foreground">© {currentYear} Straggia. Todos os direitos reservados.</p>
+          <p className="text-muted-foreground"> {currentYear} Straggia. Estratégia em Movimento.</p>
         </div>
       </div>
     </footer>
