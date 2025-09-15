@@ -16,8 +16,8 @@ const poppins = Poppins({
 })
 
 export const metadata: Metadata = getSEOMetadata({
-  title: "Straggia - Consultoria que conecta estratégia à prática",
-  description: "Clareza executável, método comprovado e resultados mensuráveis — com pessoas no centro.",
+  title: "Straggia Consultoria",
+  description: "Clareza estratégica, execução efetiva, resultados mensuráveis e pessoas no centro.",
 })
 
 export default function RootLayout({
