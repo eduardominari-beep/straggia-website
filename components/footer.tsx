@@ -18,7 +18,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Logo and description */}
           <div className="space-y-4">
-            <Image src="/brand/logo-vertical.jpg" alt="Straggia" width={120} height={120} className="h-16 w-auto" />
+            <Image src="/brand/logo-vertical.jpg" alt="Straggia" width={320} height={320} className="h-36 w-auto" />
             <p className="text-muted-foreground leading-relaxed">
               Consultoria que conecta estratégia à prática com pessoas no centro.
             </p>
@@ -51,11 +51,11 @@ export function Footer() {
             <h3 className="text-lg font-display font-semibold mb-4 text-primary">Contato</h3>
             <div className="space-y-3">
               <a
-                href="mailto:contato@straggia.com"
+                href="mailto:contato.straggia@gmail.com"
                 className="block text-muted-foreground hover:text-primary transition-colors"
-                aria-label="Enviar email para contato@straggia.com"
+                aria-label="Enviar email para contato.straggia@gmail.com"
               >
-                contato@straggia.com
+                contato.straggia@gmail.com
               </a>
               <a
                 href="https://wa.me/5516996317472"

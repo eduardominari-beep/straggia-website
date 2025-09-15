@@ -2,27 +2,27 @@ const methodSteps = [
   {
     step: "01",
     title: "Diagnóstico",
-    description: "Análise profunda da situação atual e identificação de oportunidades",
+    description: "Ouvimos pessoas, analisamos dados e mapeamos processos para revelar os verdadeiros pontos de alavancagem.",
   },
   {
     step: "02",
     title: "Sistema de Gestão",
-    description: "Estruturação de processos e definição de indicadores de performance",
+    description: "Estruturamos objetivos, rotinas e fóruns que conectam estratégia à prática, alinhando visão e execução.",
   },
   {
     step: "03",
     title: "Execução Guiada",
-    description: "Implementação acompanhada com mentoria e ajustes contínuos",
+    description: "Acompanhamos os ritos de gestão, conduzindo ações com ritmo, foco e correção de rota para gerar impacto real.",
   },
   {
     step: "04",
     title: "Padronização",
-    description: "Consolidação das melhores práticas e criação de rotinas sustentáveis",
+    description: "Consolidamos práticas eficazes em novos padrões de excelência que permanecem no dia a dia.",
   },
   {
     step: "05",
     title: "Transferência",
-    description: "Capacitação da equipe para autonomia e melhoria contínua",
+    description: "Deixamos legado com playbooks, treinamentos e mentoria que preparam os times para sustentar e ampliar resultados.",
   },
 ]
 

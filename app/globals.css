@@ -3,75 +3,113 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* ===== Straggia — Light theme (paleta do brandbook) =====
+   copper  = #D07E3E
+   graphite= #292929
+   slate   = #5D5D5D
+   steel   = #969798
+   clay    = #C4BEBA
+   fog     = #E8E5E3
+*/
 :root {
-  --background: #0b0b0d;
-  --foreground: #ffffff;
-  --card: #121316;
-  --card-foreground: #ffffff;
-  --popover: #1a1b1f;
-  --popover-foreground: #ffffff;
-  --primary: #1a9b91; /* Darker turquoise for better contrast */
-  --primary-foreground: #ffffff;
-  --primary-hover: #158a81; /* Even darker for hover states */
-  --secondary: #ff6a23;
-  --secondary-foreground: #ffffff;
-  --muted: #1a1b1f;
-  --muted-foreground: #ffffff;
-  --accent: #31d0c6; /* Keep original turquoise for accents/text */
-  --accent-foreground: #ffffff;
-  --destructive: #ff6a23;
+  /* Base do site */
+  --background: #ffffff;               /* Fundo global (body, seções, navbar) */
+  --foreground: #292929;               /* Texto padrão (graphite) */
+
+  /* Superfícies */
+  --card: #ffffff;                     /* Fundo de cards/caixas */
+  --card-foreground: #292929;          /* Texto dentro de cards */
+  --popover: #ffffff;                  /* Fundo de popovers/menus */
+  --popover-foreground: #292929;       /* Texto dentro de popovers/menus */
+
+  /* Marca / Acentos */
+  --primary: #D07E3E;                  /* COBRE — CTA principal e destaques */
+  --primary-foreground: #ffffff;       /* Texto/ícone sobre cobre */
+  --primary-hover: #BB6F35;            /* Cobre ~12% mais escuro p/ hover */
+
+  --secondary: #292929;                /* GRAPHITE — acento secundário (botões/links secundários) */
+  --secondary-foreground: #ffffff;     /* Texto/ícone sobre secondary */
+
+  /* Neutros de interface */
+  --muted: #E8E5E3;                    /* FOG — superfícies suaves (faixas separadoras) */
+  --muted-foreground: #5D5D5D;         /* SLATE — texto sobre superfícies muted */
+
+  --accent: #5D5D5D;                   /* SLATE — detalhes/links discretos/ícones */
+  --accent-foreground: #ffffff;        /* Texto/ícone quando accent é fundo */
+
+  /* Estados */
+  --destructive: #DC2626;              /* Erro/remoção */
   --destructive-foreground: #ffffff;
-  --border: #475569;
-  --input: #1a1b1f;
-  --ring: #31d0c6;
-  --chart-1: #ff6a23;
-  --chart-2: #31d0c6;
-  --chart-3: #ffffff;
-  --chart-4: #121316;
-  --chart-5: #1a1b1f;
-  --radius: 0.5rem;
-  --sidebar: #121316;
-  --sidebar-foreground: #ffffff;
-  --sidebar-primary: #1a9b91;
+
+  /* Linhas / inputs / focus */
+  --border: #E8E5E3;                   /* FOG — bordas de inputs/cards/seções */
+  --input:  #E8E5E3;                   /* Bordas de inputs (ou fundo, conforme componente) */
+  --ring:   #D07E3E;                   /* Focus ring em cobre */
+
+  /* Paleta para gráficos (ordem pensada p/ contraste) */
+  --chart-1: #D07E3E;                  /* cobre */
+  --chart-2: #292929;                  /* graphite */
+  --chart-3: #5D5D5D;                  /* slate */
+  --chart-4: #969798;                  /* steel */
+  --chart-5: #C4BEBA;                  /* clay */
+
+  --radius: 0.5rem;                    /* Raio base (botões, cards) */
+
+  /* Header/Sidebar (se houver) */
+  --sidebar: #ffffff;
+  --sidebar-foreground: #292929;
+  --sidebar-primary: #D07E3E;          /* links ativos/destaques */
   --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #ff6a23;
+  --sidebar-accent: #292929;
   --sidebar-accent-foreground: #ffffff;
-  --sidebar-border: #475569;
-  --sidebar-ring: #31d0c6;
+  --sidebar-border: #E8E5E3;
+  --sidebar-ring: #D07E3E;
 }
 
+/* Mapeia tokens → utilitários Tailwind (bg-background, text-primary, etc.) */
 @theme inline {
   --font-sans: var(--font-inter);
   --font-display: var(--font-poppins);
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
   --color-popover: var(--popover);
   --color-popover-foreground: var(--popover-foreground);
+
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
   --color-primary-hover: var(--primary-hover);
+
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
+
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
+
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
+
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
+
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
+
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
   --color-chart-3: var(--chart-3);
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
+
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+
   --color-sidebar: var(--sidebar);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar-primary: var(--sidebar-primary);
@@ -82,46 +120,19 @@
   --color-sidebar-ring: var(--sidebar-ring);
 }
 
+/* Base */
 @layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
-  body {
-    @apply bg-background text-foreground font-sans;
-  }
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    @apply font-display;
-  }
+  * { @apply border-border outline-ring/50; }
+  body { @apply bg-background text-foreground font-sans; }
+  h1,h2,h3,h4,h5,h6 { @apply font-display; }
 }
 
-/* Custom button hover states for better accessibility */
-.btn-primary {
-  background-color: var(--primary);
-  color: var(--primary-foreground);
-}
+/* Botão primário (CTA em cobre) */
+.btn-primary { background-color: var(--primary); color: var(--primary-foreground); }
+.btn-primary:hover { background-color: var(--primary-hover); }
 
-.btn-primary:hover {
-  background-color: var(--primary-hover);
-}
-
-/* Prism styles for code blocks */
-.prism-code {
-  @apply bg-card text-card-foreground p-4 rounded-lg overflow-x-auto;
-}
-
-.prism-code .token.comment {
-  @apply text-muted-foreground;
-}
-
-.prism-code .token.keyword {
-  @apply text-accent;
-}
-
-.prism-code .token.string {
-  @apply text-secondary;
-}
+/* Prism (blocos de código) */
+.prism-code { @apply bg-card text-card-foreground p-4 rounded-lg overflow-x-auto; }
+.prism-code .token.comment { @apply text-muted-foreground; }
+.prism-code .token.keyword  { @apply text-accent; }
+.prism-code .token.string   { @apply text-secondary; }
