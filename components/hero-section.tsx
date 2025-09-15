@@ -16,7 +16,7 @@ export function HeroSection() {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-display font-bold text-balance mb-6">
-            Consultoria que conecta <span className="text-accent">estratégia</span> à{" "}
+            PQP ao quadrado <span className="text-accent">estratégia</span> à{" "}
             <span className="text-secondary">prática</span>
           </h1>
 
