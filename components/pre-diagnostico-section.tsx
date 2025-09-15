@@ -8,10 +8,10 @@ export function PreDiagnosticoSection() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-display font-bold text-balance mb-4">
-            <span className="text-secondary">Pré-Diagnóstico</span> Gratuito
+            <span className="text-secondary">Dê o primeiro passo para </span> transformar sua gestão
           </h2>
           <p className="text-xl text-muted-foreground text-pretty max-w-2xl mx-auto leading-relaxed">
-            Descubra as principais oportunidades de melhoria na sua organização
+            Preencha o pré-diagnóstico gratuito e, em até 48 horas, enviaremos um relatório preliminar feito sob medida para a sua realidade.
           </p>
         </div>
 
