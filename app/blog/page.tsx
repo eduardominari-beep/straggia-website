@@ -1,3 +1,4 @@
+// app/blog/page.tsx
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -11,7 +12,12 @@ export const metadata = getSEOMetadata({
 })
 
 export default function BlogPage() {
-  const posts = getAllPosts()
+  // 1) carrega
+  const postsRaw = getAllPosts()
+  // 2) garante ordem: mais novo -> mais antigo
+  const posts = [...postsRaw].sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+  )
 
   return (
     <main className="min-h-screen bg-background">
@@ -48,7 +54,7 @@ export default function BlogPage() {
                         day: "numeric",
                       })}
                     </time>
-                    {post.tags.length > 0 && (
+                    {!!post.tags?.length && (
                       <div className="flex gap-2">
                         {post.tags.map((tag) => (
                           <Badge key={tag} variant="secondary" className="text-xs">
