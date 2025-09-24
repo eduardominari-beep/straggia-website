@@ -1,7 +1,9 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useState } from "react"
 import Image from "next/image"
+import Link from "next/link"
+import { usePathname, useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 
 const navigation = [
@@ -10,89 +12,122 @@ const navigation = [
   { name: "Método", href: "#metodo" },
   { name: "Conteúdo", href: "#conteudo" },
   { name: "Contato", href: "#contato" },
+  { name: "Quem somos", href: "/quem-somos" },
 ]
+
+// calcula a altura real do header + um respiro
+function headerOffset() {
+  const el = document.getElementById("site-header")
+  if (!el) return 90
+  return el.getBoundingClientRect().height + 12
+}
+
+function scrollWithOffset(hash: string) {
+  const el = document.querySelector(hash) as HTMLElement | null
+  if (!el) return
+  const y = el.getBoundingClientRect().top + window.scrollY - headerOffset()
+  window.scrollTo({ top: y, behavior: "smooth" })
+}
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
-  const [navH, setNavH] = useState(0)
-  const navRef = useRef<HTMLElement>(null)
+  const [spacerH, setSpacerH] = useState<number>(0)
+  const pathname = usePathname()
+  const router = useRouter()
 
-  // mede a altura real da navbar (para compensar na rolagem)
-  const measure = () => setNavH(navRef.current?.getBoundingClientRect().height ?? 0)
+  // mede a altura real do header p/ espaçador e offset
+  const measureHeader = () => {
+    const el = document.getElementById("site-header")
+    if (!el) return
+    setSpacerH(el.getBoundingClientRect().height)
+  }
 
   useEffect(() => {
     const onScroll = () => setIsScrolled(window.scrollY > 0)
     window.addEventListener("scroll", onScroll)
-    window.addEventListener("resize", measure)
-    window.addEventListener("load", measure)
-    measure()
+    window.addEventListener("resize", measureHeader)
+    measureHeader()
     return () => {
       window.removeEventListener("scroll", onScroll)
-      window.removeEventListener("resize", measure)
-      window.removeEventListener("load", measure)
+      window.removeEventListener("resize", measureHeader)
     }
   }, [])
 
-  // rola até a seção compensando exatamente a altura da navbar
-  const scrollToSection = (href: string) => {
-    const el = document.querySelector(href) as HTMLElement | null
-    if (!el) return
-    const y = window.scrollY + el.getBoundingClientRect().top - navH - 6 // 6px de respiro
-    window.scrollTo({ top: y, behavior: "smooth" })
+  // quando chegamos em /#algumaCoisa (vindo de outra rota), corrige o offset
+  useEffect(() => {
+    const fixHash = () => {
+      if (location.hash) {
+        requestAnimationFrame(() => {
+          scrollWithOffset(location.hash)
+        })
+      }
+      measureHeader()
+    }
+    fixHash()
+    window.addEventListener("hashchange", fixHash)
+    return () => window.removeEventListener("hashchange", fixHash)
+  }, [])
+
+  const handleNav = (href: string) => {
+    if (!href.startsWith("#")) {
+      router.push(href) // rota normal (ex: /quem-somos)
+      return
+    }
+    if (pathname === "/") {
+      scrollWithOffset(href) // mesma página
+    } else {
+      router.push("/" + href) // outra página; o efeito acima ajusta o offset
+    }
   }
 
   return (
     <>
       <nav
-        ref={navRef}
+        id="site-header"
         className={`fixed top-0 z-50 w-full transition-all duration-300 ${
           isScrolled ? "bg-background/95 backdrop-blur-sm border-b border-border" : "bg-transparent"
         }`}
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          {/* Altura “média” do header (tamanho anterior) */}
-          <div className="flex items-center justify-between h-28 md:h-32 lg:h-40">
-            {/* Logo em tamanho moderado */}
-            <a
-              href="#inicio"
-              className="shrink-0"
-              aria-label="Straggia"
-              onClick={(e) => {
-                e.preventDefault()
-                scrollToSection("#inicio")
-              }}
-            >
+          {/* ❗ Sem altura fixa: usamos apenas padding vertical.
+              Isso faz o header “abraçar” a logo grande. */}
+          <div className="flex items-center justify-between pt-6 md:pt-7 lg:pt-8 pb-7 md:pb-8 lg:pb-9">
+            <Link href="/#inicio" className="shrink-0" aria-label="Ir para o início">
               <Image
                 src="/brand/logo-horizontal.jpg"
                 alt="Straggia"
                 width={1200}
                 height={300}
                 priority
-                className="w-auto h-20 md:h-24 lg:h-28"
+                // ❗ Altura da logo grande; ajuste aqui se quiser maior/menor.
+                className="h-28 w-auto"
               />
-            </a>
+            </Link>
 
-            {/* Menu */}
-            <div className="hidden md:block">
-              <div className="ml-10 flex items-baseline space-x-4">
-                {navigation.map((item) => (
+            <div className="hidden md:flex items-center gap-2">
+              {navigation.map((item) =>
+                item.href.startsWith("#") ? (
                   <button
                     key={item.name}
-                    onClick={() => scrollToSection(item.href)}
-                    className="rounded-md px-3 py-2 text-sm font-medium text-foreground/80 transition-colors hover:text-foreground"
-                    aria-label={`Navegar para ${item.name}`}
+                    onClick={() => handleNav(item.href)}
+                    className="rounded-md px-3 py-2 text-sm font-medium text-foreground/80 hover:text-foreground transition-colors"
+                    aria-label={`Ir para ${item.name}`}
                   >
                     {item.name}
                   </button>
-                ))}
-              </div>
-            </div>
-
-            {/* CTA */}
-            <div className="hidden md:block">
+                ) : (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    className="rounded-md px-3 py-2 text-sm font-medium text-foreground/80 hover:text-foreground transition-colors"
+                  >
+                    {item.name}
+                  </Link>
+                ),
+              )}
               <Button
-                onClick={() => scrollToSection("#pre-diagnostico")}
-                className="bg-primary text-primary-foreground hover:bg-primary/90"
+                onClick={() => handleNav("#pre-diagnostico")}
+                className="bg-primary text-primary-foreground hover:bg-primary/90 ml-2"
               >
                 Pré-Diagnóstico
               </Button>
@@ -101,8 +136,8 @@ export function Navbar() {
         </div>
       </nav>
 
-      {/* Spacer dinâmico: evita que o topo do hero fique escondido */}
-      <div aria-hidden style={{ height: navH }} />
+      {/* Espaçador dinâmico = altura real do header */}
+      <div aria-hidden style={{ height: spacerH }} />
     </>
   )
 }

@@ -1,52 +1,54 @@
 "use client"
 
 import Image from "next/image"
+import Link from "next/link"
 
 export function Footer() {
   const currentYear = new Date().getFullYear()
-
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href)
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" })
-    }
-  }
 
   return (
     <footer id="contato" className="bg-card border-t border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* Logo and description */}
+          {/* Logo + descrição */}
           <div className="space-y-4">
-            <Image src="/brand/logo-vertical.jpg" alt="Straggia" width={320} height={320} className="h-36 w-auto" />
+            <Image
+              src="/brand/logo-vertical.jpg"
+              alt="Straggia"
+              width={320}
+              height={320}
+              className="h-36 w-auto"
+              priority={false}
+            />
             <p className="text-muted-foreground leading-relaxed">
               Consultoria que conecta estratégia à prática com pessoas no centro.
             </p>
           </div>
 
-          {/* Navigation */}
+          {/* Navegação */}
           <div>
             <h3 className="text-lg font-display font-semibold mb-4 text-primary">Navegação</h3>
             <ul className="space-y-2">
               {[
-                { name: "Início", href: "#inicio" },
-                { name: "Soluções", href: "#solucoes" },
-                { name: "Método", href: "#metodo" },
-                { name: "Conteúdo", href: "#conteudo" },
+                { name: "Início", href: "/#inicio" },
+                { name: "Soluções", href: "/#solucoes" },
+                { name: "Método", href: "/#metodo" },
+                { name: "Conteúdo", href: "/#conteudo" },
+                { name: "Quem somos", href: "/quem-somos" },
               ].map((item) => (
                 <li key={item.name}>
-                  <button
-                    onClick={() => scrollToSection(item.href)}
+                  <Link
+                    href={item.href}
                     className="text-muted-foreground hover:text-primary transition-colors"
                   >
                     {item.name}
-                  </button>
+                  </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Contact */}
+          {/* Contato */}
           <div>
             <h3 className="text-lg font-display font-semibold mb-4 text-primary">Contato</h3>
             <div className="space-y-3">
@@ -71,7 +73,9 @@ export function Footer() {
         </div>
 
         <div className="border-t border-border mt-8 pt-8 text-center">
-          <p className="text-muted-foreground"> {currentYear} Straggia. Estratégia em Movimento.</p>
+          <p className="text-muted-foreground">
+            {currentYear} Straggia. Estratégia em Movimento.
+          </p>
         </div>
       </div>
     </footer>
