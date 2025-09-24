@@ -11,7 +11,7 @@ export function getSEOMetadata({
   title = "Straggia Consultoria",
   description = "Clareza estratégica, execução efetiva, resultados mensuráveis e pessoas no centro.",
   image = "/brand/og-image.jpg",
-  url = process.env.NEXT_PUBLIC_SITE_URL ?? "https://straggia.com",
+  url = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.straggia.com",
 }: SEOProps = {}): Metadata {
   return {
     title,
