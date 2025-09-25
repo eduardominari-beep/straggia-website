@@ -114,17 +114,17 @@ export default function QuemSomosPage() {
           <TeamCard
             imageSrc="/team/eduardo.png"
             name="Eduardo Minari"
-            role="Fundador | Head de Negócios | Líder dos Consultores"
+            role="Fundador | Head de Negócios | Líder da Consultoria"
             intro={[
-              "Executivo com mais de 15 anos em gestão estratégica e operacional, Eduardo Minari é responsável por liderar a frente de negócios da Straggia Consultoria e coordenar a equipe de consultores, unindo visão estratégica à execução prática para transformar planos em resultados reais.",
-              "Antes de fundar a Straggia, Eduardo liderou operações, finanças e gestão de pessoas em uma escola de educação básica super premium, promovendo performance, governança e desenvolvimento de equipes. Atuou no primeiro ciclo de planejamento estratégico de uma das maiores redes de educação privada do país e participou da Diretoria de Planejamento e Gestão em processo de M&A, contribuindo para valuation e planejamento estratégico na aquisição de uma das maiores redes franqueadas do grupo.",
+              "Executivo com mais de 15 anos em gestão estratégica e operacional, Eduardo Minari é responsável por liderar a frente de negócios da Straggia Consultoria e coordenar os projetos, unindo visão estratégica à execução prática para transformar planos em resultados reais.",
+              "Antes de fundar a Straggia, Eduardo liderou operações, finanças e gestão de pessoas em um grupo de escolas de educação básica super premium, promovendo performance, governança e desenvolvimento de equipes. Atuou no primeiro ciclo de planejamento estratégico de uma das maiores redes de educação privada do país e participou da Diretoria de Planejamento e Gestão em processos de M&A, contribuindo para valuation e preparação estratégica na aquisição de uma das maiores redes de franquia educacional do mundo.",
               "Por cinco anos, integrou a FALCONI Consultores de Resultado, conduzindo projetos de produtividade, eficiência e crescimento em empresas de indústria, varejo, serviços e instituições públicas, sempre com foco em gerar impacto positivo em processos, equipes e resultados organizacionais.",
             ]}
             highlights={[
-              "Fundação da Straggia e autoria de artigos profissionais em gestão (atividade recente).",
+              "Fundação da Straggia e recentemente, autoria de artigos profissionais em gestão.",
               "Liderança operacional, financeira e de pessoas em educação básica super premium.",
               "Planejamento estratégico corporativo em grande grupo de educação privada.",
-              "M&A: valuation e apoio à aquisição de grande rede franqueada do setor.",
+              "M&A: valuation e apoio à aquisição de grande rede franqueada com atuação global.",
               "Experiência na FALCONI com projetos multissetoriais.",
             ]}
             focus="Estratégia clara, modelo de gestão ativo e execução acompanhada por indicadores. Conecta pessoas, processos e metas para transformar planos em resultados."
