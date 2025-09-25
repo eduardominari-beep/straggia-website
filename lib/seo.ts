@@ -53,6 +53,13 @@ export function getSEOMetadata({
         ? { publishedTime, modifiedTime, locale: "pt_BR" }
         : { locale: "pt_BR" }),
     },
+    icons: {
+  icon: [
+    { url: "/favicon.ico", sizes: "any" }, // opcional, se você tiver o .ico
+    { url: "/icon.png", type: "image/png", sizes: "512x512" },
+  ],
+  apple: [{ url: "/apple-icon.png", type: "image/png", sizes: "180x180" }],
+},
     twitter: {
       card: "summary_large_image",
       title,
