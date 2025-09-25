@@ -111,7 +111,7 @@ export default function QuemSomosPage() {
         <section>
           <h2 className="text-2xl md:text-3xl font-display font-semibold mb-6">Time Straggia</h2>
 
-          <TeamCard
+        <TeamCard
             imageSrc="/team/eduardo.png"
             name="Eduardo Minari"
             role="Fundador | Head de Negócios | Líder da Consultoria"
