@@ -1,5 +1,5 @@
 // app/quem-somos/page.tsx
-import Image from "next/image" // ⬅️ ADICIONADO
+import Image from "next/image"
 import { getSEOMetadata } from "@/lib/seo"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
@@ -20,6 +20,7 @@ export const metadata = getSEOMetadata({
   title: "Quem somos - Straggia",
   description:
     "Construímos parcerias sólidas e resultados reais que permanecem. Propósito, pilares e valores da Straggia Consultoria.",
+  path: "/quem-somos",
 })
 
 export default function QuemSomosPage() {
@@ -111,7 +112,7 @@ export default function QuemSomosPage() {
         <section>
           <h2 className="text-2xl md:text-3xl font-display font-semibold mb-6">Time Straggia</h2>
 
-        <TeamCard
+          <TeamCard
             imageSrc="/team/eduardo.png"
             name="Eduardo Minari"
             role="Fundador | Head de Negócios | Líder da Consultoria"
@@ -157,7 +158,7 @@ export default function QuemSomosPage() {
             ]}
             highlights={[
               "Diagnóstico de clima e fit cultural, desenho de cargos, trilhas de desenvolvimento e liderança.",
-              "Programas de bem-estar e alta performance com métricas de impacto.",
+              "Programas de bem-estar e alta performance com métrricas de impacto.",
               "Base científico-aplicada sólida aliada à prática executiva em RH e DHO.",
             ]}
             focus="Alinha estratégia, pessoas e cultura com indicadores de acompanhamento, garantindo resultados consistentes e sustentáveis no longo prazo."

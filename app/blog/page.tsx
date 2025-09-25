@@ -11,19 +11,18 @@ import { Footer } from "@/components/footer"
 export const metadata = getSEOMetadata({
   title: "Blog - Straggia",
   description: "Insights práticos e metodologias comprovadas para acelerar seus resultados empresariais.",
+  path: "/blog",
 })
 
 export default function BlogPage() {
-  // 1) carrega
   const postsRaw = getAllPosts()
-  // 2) garante ordem: mais novo -> mais antigo
   const posts = [...postsRaw].sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
   )
 
   return (
     <main className="min-h-screen bg-background">
-      {/* Navbar fixa (mesmo padrão das demais páginas) */}
+      {/* Navbar fixa */}
       <Navbar />
 
       {/* Header */}
@@ -44,56 +43,56 @@ export default function BlogPage() {
         </div>
       </header>
 
-      {/* Blog posts */}
+      {/* Posts */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {posts.length > 0 ? (
           <div className="space-y-8">
             {posts.map((post) => (
-  <Card
-    key={post.slug}
-    className="bg-card border-border hover:border-primary transition-colors group"
-  >
-    <article>
-      <CardHeader>
-        <div className="flex items-center gap-4 mb-2">
-          <time className="text-sm text-muted-foreground" dateTime={post.date}>
-            {new Date(post.date).toLocaleDateString("pt-BR", {
-              year: "numeric",
-              month: "long",
-              day: "numeric",
-            })}
-          </time>
-          {!!post.tags?.length && (
-            <div className="flex gap-2">
-              {post.tags.map((tag) => (
-                <Badge key={tag} variant="secondary" className="text-xs">
-                  {tag}
-                </Badge>
-              ))}
-            </div>
-          )}
-        </div>
+              <Card
+                key={post.slug}
+                className="bg-card border-border hover:border-primary transition-colors group"
+              >
+                <article>
+                  <CardHeader>
+                    <div className="flex items-center gap-4 mb-2">
+                      <time className="text-sm text-muted-foreground" dateTime={post.date}>
+                        {new Date(post.date).toLocaleDateString("pt-BR", {
+                          year: "numeric",
+                          month: "long",
+                          day: "numeric",
+                        })}
+                      </time>
+                      {!!post.tags?.length && (
+                        <div className="flex gap-2">
+                          {post.tags.map((tag) => (
+                            <Badge key={tag} variant="secondary" className="text-xs">
+                              {tag}
+                            </Badge>
+                          ))}
+                        </div>
+                      )}
+                    </div>
 
-        <CardTitle className="text-2xl font-display group-hover:text-primary transition-colors">
-          <Link href={`/blog/${post.slug}`}>{post.title}</Link>
-        </CardTitle>
-      </CardHeader>
+                    <CardTitle className="text-2xl font-display group-hover:text-primary transition-colors">
+                      <Link href={`/blog/${post.slug}`}>{post.title}</Link>
+                    </CardTitle>
+                  </CardHeader>
 
-      <CardContent>
-        <CardDescription className="text-muted-foreground leading-relaxed mb-4 text-base">
-          {post.description}
-        </CardDescription>
+                  <CardContent>
+                    <CardDescription className="text-muted-foreground leading-relaxed mb-4 text-base">
+                      {post.description}
+                    </CardDescription>
 
-        <Button
-          asChild
-          variant="outline"
-          className="border-secondary text-secondary hover:bg-secondary hover:text-secondary-foreground bg-transparent"
-        >
-           <Link href={`/blog/${post.slug}`}>Ler artigo completo</Link>
-           </Button>
-           </CardContent>
-           </article>
-           </Card>
+                    <Button
+                      asChild
+                      variant="outline"
+                      className="border-secondary text-secondary hover:bg-secondary hover:text-secondary-foreground bg-transparent"
+                    >
+                      <Link href={`/blog/${post.slug}`}>Ler artigo completo</Link>
+                    </Button>
+                  </CardContent>
+                </article>
+              </Card>
             ))}
           </div>
         ) : (

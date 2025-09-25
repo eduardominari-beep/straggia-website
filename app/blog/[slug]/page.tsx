@@ -1,3 +1,4 @@
+// app/blog/[slug]/page.tsx
 import { notFound } from "next/navigation"
 import Link from "next/link"
 import { MDXRemote } from "next-mdx-remote/rsc"
@@ -7,28 +8,24 @@ import { getPostBySlug, getAllPosts } from "@/lib/blog"
 import { getSEOMetadata } from "@/lib/seo"
 
 interface BlogPostPageProps {
-  params: {
-    slug: string
-  }
+  params: { slug: string }
 }
 
 export async function generateStaticParams() {
   const posts = getAllPosts()
-  return posts.map((post) => ({
-    slug: post.slug,
-  }))
+  return posts.map((post) => ({ slug: post.slug }))
 }
 
 export async function generateMetadata({ params }: BlogPostPageProps) {
   const post = getPostBySlug(params.slug)
-
-  if (!post) {
-    return getSEOMetadata()
-  }
+  if (!post) return getSEOMetadata({ path: "/blog" })
 
   return getSEOMetadata({
     title: `${post.title} - Blog Straggia`,
     description: post.description,
+    path: `/blog/${params.slug}`,
+    type: "article",
+    publishedTime: post.date, // usa a data do post
   })
 }
 
@@ -36,7 +33,7 @@ const mdxComponents = {
   h1: (props: any) => <h1 className="text-3xl font-display font-bold mb-6 text-primary" {...props} />,
   h2: (props: any) => <h2 className="text-2xl font-display font-semibold mb-4 text-primary mt-8" {...props} />,
   h3: (props: any) => <h3 className="text-xl font-display font-semibold mb-3 text-primary mt-6" {...props} />,
-  p: (props: any) => <p className="mb-4 leading-relaxed text-foreground" {...props} />,
+  p:  (props: any) => <p className="mb-4 leading-relaxed text-foreground" {...props} />,
   ul: (props: any) => <ul className="mb-4 ml-6 list-disc space-y-2" {...props} />,
   ol: (props: any) => <ol className="mb-4 ml-6 list-decimal space-y-2" {...props} />,
   li: (props: any) => <li className="leading-relaxed" {...props} />,
@@ -44,16 +41,13 @@ const mdxComponents = {
     <blockquote className="border-l-4 border-primary pl-4 my-6 italic text-muted-foreground" {...props} />
   ),
   code: (props: any) => <code className="bg-muted px-2 py-1 rounded text-sm text-primary font-mono" {...props} />,
-  pre: (props: any) => <pre className="prism-code mb-6 text-sm overflow-x-auto" {...props} />,
-  a: (props: any) => <a className="text-primary hover:text-secondary underline transition-colors" {...props} />,
+  pre:  (props: any) => <pre className="prism-code mb-6 text-sm overflow-x-auto" {...props} />,
+  a:   (props: any) => <a className="text-primary hover:text-secondary underline transition-colors" {...props} />,
 }
 
 export default function BlogPostPage({ params }: BlogPostPageProps) {
   const post = getPostBySlug(params.slug)
-
-  if (!post) {
-    notFound()
-  }
+  if (!post) notFound()
 
   return (
     <main className="min-h-screen bg-background">
@@ -65,7 +59,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
           </Button>
 
           <div className="flex items-center gap-4 mb-4">
-            <time className="text-sm text-muted-foreground">
+            <time className="text-sm text-muted-foreground" dateTime={post.date}>
               {new Date(post.date).toLocaleDateString("pt-BR", {
                 year: "numeric",
                 month: "long",
@@ -83,9 +77,13 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
             )}
           </div>
 
-          <h1 className="text-4xl md:text-5xl font-display font-bold text-balance mb-4">{post.title}</h1>
+          <h1 className="text-4xl md:text-5xl font-display font-bold text-balance mb-4">
+            {post.title}
+          </h1>
 
-          <p className="text-xl text-muted-foreground text-pretty leading-relaxed">{post.description}</p>
+          <p className="text-xl text-muted-foreground text-pretty leading-relaxed">
+            {post.description}
+          </p>
         </div>
       </div>
 
