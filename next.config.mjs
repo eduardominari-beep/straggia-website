@@ -63,13 +63,24 @@ const nextConfig = {
         permanent: true, // 308
       },
 
-      // ⬇️ Exemplos para mapear slugs antigos → novos (SEO / correções)
-      // {
-      //   source: "/blog/okr-bussola",
-      //   destination: "/blog/okrs-bussola",
-      //   permanent: true,
-      // },
-      // { source: "/artigo-antigo", destination: "/blog/artigo-novo", permanent: true },
+      {
+      source: '/blog/basico-estraordinario',
+      destination: '/blog/0998basico-extraordinario',
+      permanent: true,
+    },
+    // garante o singular
+    {
+      source: '/blog/okrs-bussola',
+      destination: '/blog/1000okr-bussola',
+      permanent: true,
+    },
+    // força www (você já tem)
+    {
+      source: '/:path*',
+      has: [{ type: 'host', value: 'straggia.com' }],
+      destination: 'https://www.straggia.com/:path*',
+      permanent: true,
+    },
     ];
   },
 };
