@@ -1,3 +1,4 @@
+// components/hero-section.tsx
 "use client"
 
 import Link from "next/link"
@@ -37,17 +38,16 @@ export function HeroSection() {
               </Link>
             </Button>
 
-            {/* Pré-Diagnóstico (ancora estável entre páginas) */}
+            {/* Agora vai para a Agenda */}
             <Button
               asChild
               variant="outline"
               size="lg"
               className="px-8 py-3 text-lg border-secondary text-secondary hover:bg-secondary hover:text-secondary-foreground"
             >
-              <Link href="/#pre-diagnostico">Pré-Diagnóstico Gratuito</Link>
+              <Link href="/agenda">Agendar conversa</Link>
             </Button>
 
-            {/* Quem somos (mesmo padrão de contorno) */}
             <Button asChild variant="outline" size="lg" className="px-8 py-3 text-lg">
               <Link href="/quem-somos">Quem somos</Link>
             </Button>

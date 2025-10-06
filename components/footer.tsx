@@ -53,11 +53,11 @@ export function Footer() {
             <h3 className="text-lg font-display font-semibold mb-4 text-primary">Contato</h3>
             <div className="space-y-3">
               <a
-                href="mailto:contato.straggia@gmail.com"
+                href="mailto:contato@straggia.com"
                 className="block text-muted-foreground hover:text-primary transition-colors"
-                aria-label="Enviar email para contato.straggia@gmail.com"
+                aria-label="Enviar email para contato@straggia.com"
               >
-                contato.straggia@gmail.com
+                contato@straggia.com
               </a>
               <a
                 href="https://wa.me/5516996317472"

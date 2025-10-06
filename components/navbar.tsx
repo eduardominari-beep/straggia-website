@@ -89,8 +89,7 @@ export function Navbar() {
         }`}
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          {/* ❗ Sem altura fixa: usamos apenas padding vertical.
-              Isso faz o header “abraçar” a logo grande. */}
+          {/* Sem altura fixa: apenas padding vertical p/ a logo grande */}
           <div className="flex items-center justify-between pt-6 md:pt-7 lg:pt-8 pb-7 md:pb-8 lg:pb-9">
             <Link href="/#inicio" className="shrink-0" aria-label="Ir para o início">
               <Image
@@ -99,7 +98,6 @@ export function Navbar() {
                 width={1200}
                 height={300}
                 priority
-                // ❗ Altura da logo grande; ajuste aqui se quiser maior/menor.
                 className="h-28 w-auto"
               />
             </Link>
@@ -125,11 +123,10 @@ export function Navbar() {
                   </Link>
                 ),
               )}
-              <Button
-                onClick={() => handleNav("#pre-diagnostico")}
-                className="bg-primary text-primary-foreground hover:bg-primary/90 ml-2"
-              >
-                Pré-Diagnóstico
+
+              {/* CTA primário: Agendar conversa (substitui Pré-Diagnóstico) */}
+              <Button asChild className="ml-2 bg-primary text-primary-foreground hover:bg-primary/90">
+                <Link href="/agenda">Agendar conversa</Link>
               </Button>
             </div>
           </div>
