@@ -52,6 +52,16 @@ const nextConfig = {
         permanent: true,
       },
 
+      // next.config.mjs  → dentro de async headers()
+{
+  source: "/(icon|apple-icon|favicon\\.ico)",
+  headers: [
+    // enquanto ajusta os ícones:
+    { key: "Cache-Control", value: "public, max-age=3600" }, // 1 hora
+    // quando estabilizar, pode voltar para: public, max-age=604800
+  ],
+},
+
       // 2) Rotas antigas → novas (SEO / evitar 404)
       { source: "/pre-diagnostico", destination: "/agenda", permanent: true },
 
