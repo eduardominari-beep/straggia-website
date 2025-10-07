@@ -23,14 +23,25 @@ const nextConfig = {
   async headers() {
     return [
       {
+        // assets estáticos com cache longo
         source: "/:dir(brand|team)/:path*",
         headers: [{ key: "Cache-Control", value: "public, max-age=31536000, immutable" }],
       },
+      // ícones expostos pelo app dir — regras simples (sem regex)
       {
-        source: "/(icon|apple-icon|favicon\\.ico)",
+        source: "/favicon.ico",
         headers: [{ key: "Cache-Control", value: "public, max-age=604800" }],
       },
       {
+        source: "/icon.png",
+        headers: [{ key: "Cache-Control", value: "public, max-age=604800" }],
+      },
+      {
+        source: "/apple-icon.png",
+        headers: [{ key: "Cache-Control", value: "public, max-age=604800" }],
+      },
+      {
+        // cabeçalhos de segurança e (em preview) noindex
         source: "/:path*",
         headers: [
           { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
@@ -44,30 +55,24 @@ const nextConfig = {
 
   async redirects() {
     return [
-      // 1) Canonical: força www (308) quando host é o apex
+      // força www
       {
         source: "/:path*",
         has: [{ type: "host", value: "straggia.com" }],
         destination: "https://www.straggia.com/:path*",
         permanent: true,
       },
-
-      // next.config.mjs  → dentro de async headers()
-{
-  source: "/(icon|apple-icon|favicon\\.ico)",
-  headers: [
-    // enquanto ajusta os ícones:
-    { key: "Cache-Control", value: "public, max-age=3600" }, // 1 hora
-    // quando estabilizar, pode voltar para: public, max-age=604800
-  ],
-},
-
-      // 2) Rotas antigas → novas (SEO / evitar 404)
-      { source: "/pre-diagnostico", destination: "/agenda", permanent: true },
-
-      // Slugs corrigidos: use as rotas públicas (sem prefixos numéricos de arquivo)
-      { source: "/blog/basico-estraordinario", destination: "/blog/basico-extraordinario", permanent: true },
-      { source: "/blog/okrs-bussola",           destination: "/blog/okr-bussola",           permanent: true },
+      // correções de slugs
+      {
+        source: "/blog/basico-estraordinario",
+        destination: "/blog/0998basico-extraordinario",
+        permanent: true,
+      },
+      {
+        source: "/blog/okrs-bussola",
+        destination: "/blog/1000okr-bussola",
+        permanent: true,
+      },
     ];
   },
 };
