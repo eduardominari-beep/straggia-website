@@ -8,12 +8,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const base = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.straggia.com"
   const now = new Date()
 
-  const staticRoutes = [
-    { url: `${base}/`, lastModified: now, changeFrequency: "weekly",  priority: 1 },
-    { url: `${base}/quem-somos`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${base}/blog`, lastModified: now, changeFrequency: "weekly",  priority: 0.9 },
-    { url: `${base}/agenda`, lastModified: now, changeFrequency: "weekly",  priority: 0.9 }, // 👈 novo
-  ] satisfies MetadataRoute.Sitemap
+// app/sitemap.ts (trecho)
+const staticRoutes = [
+  { url: `${base}/`, lastModified: now, changeFrequency: "weekly", priority: 1 },
+  { url: `${base}/quem-somos`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+  { url: `${base}/blog`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
+  { url: `${base}/agenda`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
+] as const
 
   const postRoutes = getAllPosts().map(p => ({
     url: `${base}/blog/${p.slug}`,

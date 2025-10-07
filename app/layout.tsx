@@ -15,14 +15,15 @@ export const metadata: Metadata = {
     title: "Straggia Consultoria",
     description: "Clareza estratégica, execução efetiva, resultados mensuráveis e pessoas no centro.",
   }),
-  // 👇 cache-busting aqui
   icons: {
     icon: [
-      { url: "/favicon.ico?v=3" },
-      { url: "/icon.png?v=3", type: "image/png", sizes: "any" },
+      { url: "/favicon.ico", sizes: "any" },                 // .ico multi-res
+      { url: "/icon.png", type: "image/png", sizes: "48x48" } // PNG para o Google
     ],
-    apple: "/apple-icon.png?v=3",
+    apple: [{ url: "/apple-icon.png", sizes: "180x180" }],
+    shortcut: ["/favicon.ico"],
   },
+  themeColor: "#0b0b0b",
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
