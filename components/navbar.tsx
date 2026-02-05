@@ -5,6 +5,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
+import { YoutubeLink } from "@/components/youtube-link"
 
 const navigation = [
   { name: "Início", href: "#inicio" },
@@ -125,9 +126,11 @@ export function Navbar() {
               )}
 
               {/* CTA primário: Agendar conversa (substitui Pré-Diagnóstico) */}
+              {/* YouTube */}
+              <YoutubeLink />
               <Button asChild className="ml-2 bg-primary text-primary-foreground hover:bg-primary/90">
-                <Link href="/agenda">Agendar conversa</Link>
-              </Button>
+                 <Link href="/agenda">Agendar conversa</Link>
+               </Button>
             </div>
           </div>
         </div>

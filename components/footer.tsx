@@ -2,6 +2,7 @@
 
 import Image from "next/image"
 import Link from "next/link"
+import { YoutubeLink } from "@/components/youtube-link"
 
 export function Footer() {
   const currentYear = new Date().getFullYear()
@@ -68,6 +69,9 @@ export function Footer() {
               >
                 WhatsApp: (16) 99631-7472
               </a>
+              <div>
+                <YoutubeLink />
+              </div>
             </div>
           </div>
         </div>
