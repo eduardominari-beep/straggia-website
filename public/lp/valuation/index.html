@@ -1,0 +1,660 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Straggia Consultoria | Valuation e Venda de Empresa</title>
+  <meta name="description" content="Valuation defensável, preparação para venda e assessoria de M&A com abordagem estratégica e confidencial." />
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --bg-elev: #111214;
+      --text: #f2f2f2;
+      --text-soft: #c7c9cf;
+      --muted: #8e949e;
+      --silver: #c0c0c0;
+      --silver-cool: #a7abb3;
+      --copper: #b87333;
+      --copper-strong: #9d6027;
+      --copper-soft: #c98a51;
+      --line: rgba(192, 192, 192, 0.24);
+      --focus: #d8dbe1;
+      --radius: 14px;
+      --shadow: 0 0 0 1px rgba(192, 192, 192, 0.08), 0 12px 36px rgba(0, 0, 0, 0.55);
+      color-scheme: dark;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: radial-gradient(circle at 16% -8%, rgba(184, 115, 51, 0.18), transparent 42%),
+                  radial-gradient(circle at 90% 0%, rgba(167, 171, 179, 0.1), transparent 42%),
+                  var(--bg);
+      color: var(--text);
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.45;
+      min-height: 100%;
+    }
+
+    a { color: inherit; }
+
+    .wrap {
+      width: min(1120px, 92vw);
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(8px);
+      background: rgba(10, 10, 10, 0.82);
+      border-bottom: 1px solid rgba(167, 171, 179, 0.2);
+    }
+
+    .topbar-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 0;
+      gap: 1rem;
+    }
+
+    .brand {
+      font-size: 0.95rem;
+      letter-spacing: 0.22em;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--silver);
+      text-decoration: none;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      flex-wrap: wrap;
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: var(--text-soft);
+      font-size: 0.95rem;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      padding: 0.44rem 0.78rem;
+      transition: 160ms ease;
+    }
+
+    .nav a:hover,
+    .nav a:focus-visible {
+      color: var(--text);
+      border-color: rgba(192, 192, 192, 0.35);
+      background: rgba(167, 171, 179, 0.08);
+      outline: none;
+    }
+
+    .hero {
+      padding: 5rem 0 2.8rem;
+    }
+
+    h1 {
+      margin: 0 0 1rem;
+      max-width: 24ch;
+      font-size: clamp(1.85rem, 3.6vw, 3.25rem);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+
+    .subtitle {
+      margin: 0;
+      max-width: 72ch;
+      color: var(--text-soft);
+      font-size: clamp(1rem, 1.8vw, 1.18rem);
+    }
+
+    .cta-row {
+      margin-top: 1.75rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+    }
+
+    .btn {
+      border-radius: 999px;
+      border: 1px solid transparent;
+      padding: 0.8rem 1.25rem;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      cursor: pointer;
+      transition: 170ms ease;
+      font-size: 0.97rem;
+    }
+
+    .btn:focus-visible,
+    input:focus-visible,
+    select:focus-visible,
+    textarea:focus-visible {
+      outline: 2px solid var(--focus);
+      outline-offset: 2px;
+    }
+
+    .btn-primary {
+      background: linear-gradient(180deg, var(--copper-soft), var(--copper));
+      color: #100a05;
+      box-shadow: 0 10px 24px rgba(184, 115, 51, 0.27);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      background: linear-gradient(180deg, #d09761, var(--copper-strong));
+    }
+
+    .btn-secondary {
+      border-color: var(--silver-cool);
+      color: var(--silver);
+      background: transparent;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(167, 171, 179, 0.12);
+      border-color: var(--silver);
+      color: var(--text);
+    }
+
+    .grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: 1fr;
+    }
+
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(17, 18, 20, 0.96), rgba(10, 10, 10, 0.98));
+      box-shadow: var(--shadow);
+      padding: 1.2rem 1.1rem;
+    }
+
+    .panel h2 {
+      margin-top: 0;
+      margin-bottom: 0.8rem;
+      font-size: 1.15rem;
+      color: var(--silver);
+    }
+
+    ul.clean {
+      margin: 0;
+      padding-left: 1.1rem;
+      color: var(--text-soft);
+    }
+
+    ul.clean li { margin-bottom: 0.52rem; }
+
+    .note {
+      margin-top: 1rem;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .steps {
+      margin-top: 1.2rem;
+      border-top: 1px solid rgba(167, 171, 179, 0.16);
+      padding-top: 1rem;
+      display: grid;
+      gap: 0.85rem;
+    }
+
+    .step {
+      border-left: 2px solid rgba(184, 115, 51, 0.8);
+      padding-left: 0.75rem;
+      color: var(--text-soft);
+    }
+
+    .form-wrap {
+      margin-top: 2rem;
+      padding-bottom: 4rem;
+    }
+
+    form {
+      display: grid;
+      gap: 0.9rem;
+    }
+
+    .row {
+      display: grid;
+      gap: 0.85rem;
+      grid-template-columns: 1fr;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.38rem;
+      color: var(--silver-cool);
+      font-size: 0.92rem;
+      font-weight: 500;
+    }
+
+    .required::after {
+      content: " *";
+      color: var(--copper-soft);
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      border-radius: 10px;
+      border: 1px solid rgba(167, 171, 179, 0.34);
+      background: rgba(17, 18, 20, 0.95);
+      color: var(--text);
+      padding: 0.72rem 0.8rem;
+      font-size: 0.96rem;
+      transition: border-color 150ms ease, box-shadow 150ms ease;
+    }
+
+    input::placeholder,
+    textarea::placeholder { color: rgba(192, 192, 192, 0.52); }
+
+    input:hover,
+    select:hover,
+    textarea:hover { border-color: rgba(192, 192, 192, 0.5); }
+
+    .radios {
+      display: grid;
+      gap: 0.5rem;
+    }
+
+    .radio-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.52rem;
+      border: 1px solid rgba(167, 171, 179, 0.25);
+      border-radius: 10px;
+      padding: 0.58rem 0.68rem;
+      background: rgba(17, 18, 20, 0.86);
+    }
+
+    .radio-item input {
+      width: auto;
+      margin-top: 0.18rem;
+      accent-color: var(--copper-soft);
+    }
+
+    .radio-item label {
+      margin: 0;
+      color: var(--text-soft);
+      cursor: pointer;
+    }
+
+    .status {
+      min-height: 1.2rem;
+      margin-top: 0.25rem;
+      font-size: 0.94rem;
+    }
+
+    .status[data-type="success"] { color: #c4d8c6; }
+    .status[data-type="error"] { color: #e6b3b3; }
+    .status[data-type="loading"] { color: var(--silver-cool); }
+
+    .foot {
+      border-top: 1px solid rgba(167, 171, 179, 0.2);
+      padding: 1.25rem 0 1.8rem;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    @media (min-width: 760px) {
+      .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .row {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .panel { padding: 1.3rem 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar" aria-label="Cabeçalho principal">
+    <div class="wrap topbar-inner">
+      <a href="/" class="brand" aria-label="Straggia Consultoria">STRAGGIA</a>
+      <nav class="nav" aria-label="Navegação da landing page">
+        <a href="/">Voltar ao site</a>
+        <a href="#form">Formulário</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero wrap" aria-labelledby="lp-title">
+      <h1 id="lp-title">Quer vender sua empresa com um valuation seguro e defensável?</h1>
+      <p class="subtitle">Conversa inicial gratuita para entender seu momento e definir a abordagem certa: valuation para negociação, preparação para venda (value-up) ou assessoria de M&amp;A.</p>
+      <div class="cta-row" aria-label="Ações principais">
+        <a id="cta-whatsapp-top" class="btn btn-primary" href="#">Falar no WhatsApp</a>
+        <a class="btn btn-secondary" href="#form">Preencher formulário</a>
+      </div>
+    </section>
+
+    <section class="wrap grid" aria-label="Informações sobre o serviço">
+      <article class="panel">
+        <h2>Para quem é</h2>
+        <ul class="clean">
+          <li>Está considerando vender total ou parcialmente a empresa</li>
+          <li>Quer uma avaliação confiável, com premissas claras e documentação</li>
+          <li>Precisa entender o que puxa valor e o que derruba valor numa negociação</li>
+          <li>Quer um processo mais seguro e confidencial</li>
+        </ul>
+      </article>
+
+      <article class="panel">
+        <h2>O que você recebe na conversa inicial (gratuita)</h2>
+        <ul class="clean">
+          <li>Clareza sobre o tipo de valuation adequado (e o que evitar)</li>
+          <li>Quais informações são necessárias para um valuation defensável</li>
+          <li>Drivers de valor e riscos que afetam preço e apetite do comprador</li>
+          <li>Próximo passo: avaliar agora, preparar antes, ou iniciar abordagem de mercado</li>
+        </ul>
+        <p class="note">Uma conversa objetiva para definir o caminho certo e o próximo passo mais adequado ao seu caso.</p>
+      </article>
+    </section>
+
+    <section class="wrap panel" style="margin-top: 1rem;" aria-labelledby="como-funciona">
+      <h2 id="como-funciona">Como funciona</h2>
+      <div class="steps">
+        <div class="step">1) Você preenche dados básicos (ou chama direto no WhatsApp)</div>
+        <div class="step">2) Eu entendo o contexto e confirmo a conversa</div>
+        <div class="step">3) Definimos escopo e próximos passos (valuation / value-up / M&amp;A)</div>
+      </div>
+    </section>
+
+    <section class="wrap form-wrap" id="form" aria-labelledby="form-title">
+      <div class="panel">
+        <h2 id="form-title">Fale com a Straggia Consultoria</h2>
+        <form id="lead-form" novalidate>
+          <div class="row">
+            <div>
+              <label class="required" for="nome">Nome e sobrenome</label>
+              <input id="nome" name="nome" type="text" autocomplete="name" placeholder="Ex: João Silva" required />
+            </div>
+            <div>
+              <label class="required" for="whatsapp">WhatsApp</label>
+              <input id="whatsapp" name="whatsapp" type="tel" inputmode="numeric" autocomplete="tel" placeholder="(11) 99999-9999" required />
+            </div>
+          </div>
+
+          <div class="row">
+            <div>
+              <label class="required" for="empresa">Empresa</label>
+              <input id="empresa" name="empresa" type="text" autocomplete="organization" placeholder="Ex: ABC Indústria Ltda." required />
+            </div>
+            <div>
+              <label for="cidadeUf">Cidade/UF</label>
+              <input id="cidadeUf" name="cidadeUf" type="text" placeholder="Ex: São Paulo/SP" />
+            </div>
+          </div>
+
+          <div class="row">
+            <div>
+              <label class="required" for="faturamentoAnual">Faturamento anual</label>
+              <select id="faturamentoAnual" name="faturamentoAnual" required>
+                <option value="">Selecione...</option>
+                <option>Até R$ 3M</option>
+                <option>R$ 3–10M</option>
+                <option>R$ 10–30M</option>
+                <option>R$ 30–100M</option>
+                <option>Acima de R$ 100M</option>
+              </select>
+            </div>
+            <div>
+              <fieldset style="border:0; padding:0; margin:0;">
+                <legend class="required" style="margin-bottom:0.36rem; color: var(--silver-cool); font-size: 0.92rem;">Objetivo</legend>
+                <div class="radios" role="radiogroup">
+                  <div class="radio-item">
+                    <input id="obj1" type="radio" name="objetivo" value="Quero vender em até 12 meses" required />
+                    <label for="obj1">Quero vender em até 12 meses</label>
+                  </div>
+                  <div class="radio-item">
+                    <input id="obj2" type="radio" name="objetivo" value="Quero entender valor e opções" />
+                    <label for="obj2">Quero entender valor e opções</label>
+                  </div>
+                  <div class="radio-item">
+                    <input id="obj3" type="radio" name="objetivo" value="Quero preparar para vender melhor" />
+                    <label for="obj3">Quero preparar para vender melhor</label>
+                  </div>
+                  <div class="radio-item">
+                    <input id="obj4" type="radio" name="objetivo" value="Outro" />
+                    <label for="obj4">Outro</label>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+          </div>
+
+          <div id="outro-wrap" hidden>
+            <label for="objetivoOutro">Descreva seu objetivo</label>
+            <input id="objetivoOutro" name="objetivoOutro" type="text" maxlength="120" placeholder="Ex: Buscar sócio estratégico mantendo controle" />
+          </div>
+
+          <input type="hidden" id="utm_source" name="utm_source" />
+          <input type="hidden" id="utm_medium" name="utm_medium" />
+          <input type="hidden" id="utm_campaign" name="utm_campaign" />
+          <input type="hidden" id="utm_content" name="utm_content" />
+          <input type="hidden" id="utm_term" name="utm_term" />
+          <input type="hidden" id="page_path" name="page_path" />
+          <input type="hidden" id="timestamp" name="timestamp" />
+
+          <div class="cta-row" style="margin-top:0.35rem;">
+            <button id="submit-btn" type="submit" class="btn btn-primary">Enviar</button>
+            <button id="whats-btn" type="button" class="btn btn-secondary">Falar no WhatsApp</button>
+          </div>
+
+          <p id="form-status" class="status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap">© <span id="year"></span> Straggia Consultoria. Atendimento com confidencialidade e abordagem técnica.</div>
+  </footer>
+
+  <script>
+    (() => {
+      // ===== CONFIG =====
+      const WHATSAPP_NUMBER = "5516996317472";
+      const LEAD_ENDPOINT = "/api/leads";   // ✅ agora passa pelo seu backend (route.ts)
+      const SEGMENTO = "MA";
+      const PAGINA = "/lp/ma";
+      // ==================
+
+      const form = document.getElementById("lead-form");
+      const whatsappInput = document.getElementById("whatsapp");
+      const statusEl = document.getElementById("form-status");
+      const submitBtn = document.getElementById("submit-btn");
+      const whatsBtn = document.getElementById("whats-btn");
+      const outroWrap = document.getElementById("outro-wrap");
+      const objetivoOutroInput = document.getElementById("objetivoOutro");
+      const objetivos = Array.from(document.querySelectorAll('input[name="objetivo"]'));
+
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      const formatWhatsapp = (value) => {
+        const digits = (value || "").replace(/\D/g, "").slice(0, 11);
+        if (digits.length <= 2) return digits;
+        if (digits.length <= 6) return `(${digits.slice(0, 2)}) ${digits.slice(2)}`;
+        if (digits.length <= 10) return `(${digits.slice(0, 2)}) ${digits.slice(2, 6)}-${digits.slice(6)}`;
+        return `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7)}`;
+      };
+
+      const setStatus = (type, message) => {
+        statusEl.dataset.type = type;
+        statusEl.textContent = message;
+      };
+
+      const fillTrackingFields = () => {
+        const params = new URLSearchParams(window.location.search);
+        ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"].forEach((key) => {
+          const el = document.getElementById(key);
+          el.value = params.get(key) || "";
+        });
+        document.getElementById("page_path").value = window.location.pathname;
+        document.getElementById("timestamp").value = new Date().toISOString();
+      };
+
+      const syncObjetivoOutro = () => {
+        const selected = objetivos.find((item) => item.checked);
+        const show = selected && selected.value === "Outro";
+        outroWrap.hidden = !show;
+        objetivoOutroInput.required = !!show;
+      };
+
+      const getPayload = () => {
+        const formData = new FormData(form);
+
+        const nome = (formData.get("nome") || "").toString().trim();
+        const whatsapp = (formData.get("whatsapp") || "").toString().trim();
+        const empresa = (formData.get("empresa") || "").toString().trim();
+        const cidadeUf = (formData.get("cidadeUf") || "").toString().trim();
+        const faturamento = (formData.get("faturamentoAnual") || "").toString().trim();
+        const objetivo = (formData.get("objetivo") || "").toString().trim();
+        const objetivoOutro = (formData.get("objetivoOutro") || "").toString().trim();
+
+        return {
+          // ✅ SEM api_key aqui — fica no servidor (route.ts via env var)
+          nome_completo: nome,
+          whatsapp,
+          empresa,
+          cidade_uf: cidadeUf,
+          faturamento_faixa: faturamento,
+          objetivo,
+          objetivo_outro: objetivoOutro,
+
+          utm_source: (formData.get("utm_source") || "").toString().trim(),
+          utm_medium: (formData.get("utm_medium") || "").toString().trim(),
+          utm_campaign: (formData.get("utm_campaign") || "").toString().trim(),
+          utm_content: (formData.get("utm_content") || "").toString().trim(),
+          utm_term: (formData.get("utm_term") || "").toString().trim(),
+          page_path: (formData.get("page_path") || "").toString().trim(),
+          timestamp_iso: (formData.get("timestamp") || "").toString().trim(),
+          user_agent: navigator.userAgent,
+
+          segmento: SEGMENTO,
+          pagina: PAGINA
+        };
+      };
+
+      const validate = (payload) => {
+        if (!payload.nome_completo || !payload.whatsapp || !payload.empresa || !payload.faturamento_faixa || !payload.objetivo) {
+          return "Preencha todos os campos obrigatórios para continuar.";
+        }
+        if (payload.nome_completo.length < 5 || payload.nome_completo.split(/\s+/).length < 2) {
+          return "Informe nome e sobrenome.";
+        }
+        const digits = payload.whatsapp.replace(/\D/g, "");
+        if (digits.length < 10) return "Informe um WhatsApp válido com DDD.";
+        if (payload.objetivo === "Outro" && !payload.objetivo_outro) {
+          return "Descreva seu objetivo no campo adicional.";
+        }
+        return "";
+      };
+
+      const buildWhatsAppLink = (payload) => {
+        const hasAnyField =
+          !!payload.nome_completo || !!payload.empresa || !!payload.whatsapp || !!payload.faturamento_faixa || !!payload.objetivo;
+
+        if (!hasAnyField) {
+          const text =
+`Oi! Tenho interesse em valuation defensável / venda de empresa.
+Quero entender como funciona a conversa inicial e os próximos passos.`;
+          return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
+        }
+
+        const objetivoFinal =
+          payload.objetivo === "Outro" && payload.objetivo_outro
+            ? payload.objetivo_outro
+            : payload.objetivo;
+
+        const text =
+`Oi! Tenho interesse em valuation defensável / venda de empresa.
+Objetivo: ${objetivoFinal || "Não informado"}
+Nome: ${payload.nome_completo || "-"}
+Empresa: ${payload.empresa || "-"}
+WhatsApp: ${payload.whatsapp || "-"}
+Faturamento: ${payload.faturamento_faixa || "-"}`;
+
+        return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
+      };
+
+      const openWhats = () => {
+        const payload = getPayload();
+        window.open(buildWhatsAppLink(payload), "_blank", "noopener");
+      };
+
+      fillTrackingFields();
+      syncObjetivoOutro();
+
+      objetivos.forEach((item) => item.addEventListener("change", syncObjetivoOutro));
+      whatsappInput.addEventListener("input", (event) => {
+        event.target.value = formatWhatsapp(event.target.value);
+      });
+
+      document.getElementById("cta-whatsapp-top").addEventListener("click", (event) => {
+        event.preventDefault();
+        openWhats();
+      });
+
+      whatsBtn.addEventListener("click", (event) => {
+        event.preventDefault();
+        openWhats();
+      });
+
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const payload = getPayload();
+        const error = validate(payload);
+
+        if (error) {
+          setStatus("error", error);
+          return;
+        }
+
+        submitBtn.disabled = true;
+        submitBtn.setAttribute("aria-busy", "true");
+        setStatus("loading", "Enviando seus dados...");
+
+        try {
+          const response = await fetch(LEAD_ENDPOINT, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+          });
+
+          const data = await response.json().catch(() => null);
+
+          if (!response.ok || (data && data.ok === false)) {
+            const msg = (data && data.error) ? data.error : "Falha no envio.";
+            throw new Error(msg);
+          }
+
+          setStatus("success", "Dados enviados com sucesso. Se preferir, fale no WhatsApp para agilizar.");
+          form.reset();
+          fillTrackingFields();
+          syncObjetivoOutro();
+        } catch (err) {
+          setStatus("error", (err && err.message ? err.message : "Não conseguimos concluir o envio agora.") + " Você pode falar no WhatsApp.");
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.removeAttribute("aria-busy");
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
