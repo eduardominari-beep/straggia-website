@@ -78,10 +78,11 @@ const nextConfig = {
 
   async rewrites() {
     return [
-      // URL bonita para LP estática em /public
-      { source: "/lp/valuation", destination: "/lp/valuation/index.html" },
-      // (opcional) trailing slash também
-      { source: "/lp/valuation/", destination: "/lp/valuation/index.html" },
+    { source: "/lp/atracta", destination: "/lp/atracta/index.html" },
+    { source: "/lp/atracta/", destination: "/lp/atracta/index.html" },
+
+    { source: "/lp/valuation", destination: "/lp/valuation/index.html" },
+    { source: "/lp/valuation/", destination: "/lp/valuation/index.html" },
     ];
   },
 };

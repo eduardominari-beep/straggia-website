@@ -1,0 +1,577 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Straggia | Enrollment & Re-enrollment Strategy for International Schools</title>
+  <meta name="description" content="Integrate enrollment and re-enrollment strategically. Protect profitability through a structured journey and commercial alignment." />
+
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --bg-elev: #111214;
+      --text: #f2f2f2;
+      --text-soft: #c7c9cf;
+      --muted: #8e949e;
+      --silver: #c0c0c0;
+      --silver-cool: #a7abb3;
+      --copper: #b87333;
+      --copper-strong: #9d6027;
+      --copper-soft: #c98a51;
+      --line: rgba(192, 192, 192, 0.24);
+      --focus: #d8dbe1;
+      --radius: 14px;
+      --shadow: 0 0 0 1px rgba(192, 192, 192, 0.08), 0 12px 36px rgba(0, 0, 0, 0.55);
+      color-scheme: dark;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: radial-gradient(circle at 16% -8%, rgba(184, 115, 51, 0.18), transparent 42%),
+                  radial-gradient(circle at 90% 0%, rgba(167, 171, 179, 0.1), transparent 42%),
+                  var(--bg);
+      color: var(--text);
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.45;
+      min-height: 100%;
+    }
+
+    a { color: inherit; }
+
+    .wrap {
+      width: min(1120px, 92vw);
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(8px);
+      background: rgba(10, 10, 10, 0.82);
+      border-bottom: 1px solid rgba(167, 171, 179, 0.2);
+    }
+
+    .topbar-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 0;
+      gap: 1rem;
+    }
+
+    .brand {
+      font-size: 0.95rem;
+      letter-spacing: 0.22em;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--silver);
+      text-decoration: none;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      flex-wrap: wrap;
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: var(--text-soft);
+      font-size: 0.95rem;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      padding: 0.44rem 0.78rem;
+      transition: 160ms ease;
+    }
+
+    .nav a:hover,
+    .nav a:focus-visible {
+      color: var(--text);
+      border-color: rgba(192, 192, 192, 0.35);
+      background: rgba(167, 171, 179, 0.08);
+      outline: none;
+    }
+
+    .hero {
+      padding: 5rem 0 2.8rem;
+    }
+
+    h1 {
+      margin: 0 0 1rem;
+      max-width: 26ch;
+      font-size: clamp(1.85rem, 3.6vw, 3.25rem);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+
+    .subtitle {
+      margin: 0;
+      max-width: 78ch;
+      color: var(--text-soft);
+      font-size: clamp(1rem, 1.8vw, 1.18rem);
+    }
+
+    .pt {
+      display: block;
+      margin-top: 0.35rem;
+      color: rgba(167, 171, 179, 0.78);
+      font-size: 0.92em;
+    }
+
+    .cta-row {
+      margin-top: 1.75rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+    }
+
+    .btn {
+      border-radius: 999px;
+      border: 1px solid transparent;
+      padding: 0.8rem 1.25rem;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      cursor: pointer;
+      transition: 170ms ease;
+      font-size: 0.97rem;
+      background: transparent;
+      color: var(--text);
+    }
+
+    .btn:focus-visible,
+    input:focus-visible,
+    select:focus-visible,
+    textarea:focus-visible {
+      outline: 2px solid var(--focus);
+      outline-offset: 2px;
+    }
+
+    .btn-primary {
+      background: linear-gradient(180deg, var(--copper-soft), var(--copper));
+      color: #100a05;
+      box-shadow: 0 10px 24px rgba(184, 115, 51, 0.27);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      background: linear-gradient(180deg, #d09761, var(--copper-strong));
+    }
+
+    .btn-secondary {
+      border-color: var(--silver-cool);
+      color: var(--silver);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(167, 171, 179, 0.12);
+      border-color: var(--silver);
+      color: var(--text);
+    }
+
+    .grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: 1fr;
+    }
+
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(17, 18, 20, 0.96), rgba(10, 10, 10, 0.98));
+      box-shadow: var(--shadow);
+      padding: 1.2rem 1.1rem;
+    }
+
+    .panel h2 {
+      margin-top: 0;
+      margin-bottom: 0.8rem;
+      font-size: 1.15rem;
+      color: var(--silver);
+    }
+
+    ul.clean {
+      margin: 0;
+      padding-left: 1.1rem;
+      color: var(--text-soft);
+    }
+
+    ul.clean li { margin-bottom: 0.52rem; }
+
+    .note {
+      margin-top: 1rem;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .form-wrap {
+      margin-top: 2rem;
+      padding-bottom: 4rem;
+    }
+
+    form { display: grid; gap: 0.9rem; }
+
+    .row {
+      display: grid;
+      gap: 0.85rem;
+      grid-template-columns: 1fr;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.38rem;
+      color: var(--silver-cool);
+      font-size: 0.92rem;
+      font-weight: 500;
+    }
+
+    .required::after {
+      content: " *";
+      color: var(--copper-soft);
+    }
+
+    input, select, textarea {
+      width: 100%;
+      border-radius: 10px;
+      border: 1px solid rgba(167, 171, 179, 0.34);
+      background: rgba(17, 18, 20, 0.95);
+      color: var(--text);
+      padding: 0.72rem 0.8rem;
+      font-size: 0.96rem;
+      transition: border-color 150ms ease, box-shadow 150ms ease;
+    }
+
+    input::placeholder,
+    textarea::placeholder { color: rgba(192, 192, 192, 0.52); }
+
+    input:hover,
+    select:hover,
+    textarea:hover { border-color: rgba(192, 192, 192, 0.5); }
+
+    .status {
+      min-height: 1.2rem;
+      margin-top: 0.25rem;
+      font-size: 0.94rem;
+    }
+
+    .status[data-type="success"] { color: #c4d8c6; }
+    .status[data-type="error"] { color: #e6b3b3; }
+    .status[data-type="loading"] { color: var(--silver-cool); }
+
+    .foot {
+      border-top: 1px solid rgba(167, 171, 179, 0.2);
+      padding: 1.25rem 0 1.8rem;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    @media (min-width: 760px) {
+      .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .panel { padding: 1.3rem 1.25rem; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar" aria-label="Main header">
+    <div class="wrap topbar-inner">
+      <a href="/" class="brand" aria-label="Straggia">STRAGGIA</a>
+      <nav class="nav" aria-label="Landing navigation">
+        <a href="/">Back to site <span style="opacity:.7">/ Voltar ao site</span></a>
+        <a href="#form">Schedule conversation <span style="opacity:.7">/ Agendar conversa</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero wrap" aria-labelledby="lp-title">
+      <h1 id="lp-title">
+        Are you ready for the next enrollment cycle?
+        <span class="pt">Você está preparado para o próximo ciclo de matrículas?</span>
+      </h1>
+      <p class="subtitle">
+        Enrollment is visible. Re-enrollment is where profitability leaks if the experience isn’t managed.
+        <span class="pt">Matrícula é visível. Rematrícula é onde a rentabilidade vaza se a experiência não é gerida.</span>
+      </p>
+
+      <div class="cta-row" aria-label="Primary actions">
+        <a id="cta-whatsapp-top" class="btn btn-primary" href="#">Talk to Straggia</a>
+        <a class="btn btn-secondary" href="#form">Schedule a strategic conversation</a>
+      </div>
+    </section>
+
+    <section class="wrap grid" aria-label="Service info">
+      <article class="panel">
+        <h2>Where profitability leaks <span class="pt">Onde a rentabilidade se perde</span></h2>
+        <ul class="clean">
+          <li>Admissions is strong, but the ongoing family journey is unmanaged <span class="pt">Admissions forte, mas a jornada contínua não é gerida</span></li>
+          <li>Touchpoints without owners, standards, or KPIs <span class="pt">Pontos de contato sem dono, padrão e indicador</span></li>
+          <li>Re-enrollment treated as operational, not strategic <span class="pt">Rematrícula tratada como operacional, não estratégica</span></li>
+          <li>Commercial decisions disconnected from experience delivery <span class="pt">Decisões comerciais desconectadas da entrega</span></li>
+        </ul>
+      </article>
+
+      <article class="panel">
+        <h2>What we work on <span class="pt">Em que trabalhamos</span></h2>
+        <ul class="clean">
+          <li>Integrate enrollment + re-enrollment (one system) <span class="pt">Integração matrícula + rematrícula (um sistema)</span></li>
+          <li>Map the student/family journey and critical touchpoints <span class="pt">Mapear jornada e pontos críticos</span></li>
+          <li>Define KPIs, standards, routines, and accountability <span class="pt">Definir KPIs, padrões, rotina e accountability</span></li>
+          <li>Commercial alignment and marketing ROI clarity <span class="pt">Alinhamento comercial e clareza de ROI</span></li>
+        </ul>
+        <p class="note">
+          Strategic conversation, no commitment. If it makes sense, we go deeper.
+          <span class="pt">Conversa estratégica, sem compromisso. Se fizer sentido, aprofundamos.</span>
+        </p>
+      </article>
+    </section>
+
+    <section class="wrap form-wrap" id="form" aria-labelledby="form-title">
+      <div class="panel">
+        <h2 id="form-title">Talk to Straggia Consultoria <span class="pt">Fale com a Straggia Consultoria</span></h2>
+
+        <form id="lead-form" novalidate>
+          <div class="row">
+            <div>
+              <label class="required" for="nome">Full name <span style="opacity:.7">/ Nome completo</span></label>
+              <input id="nome" name="nome" type="text" autocomplete="name" placeholder="Ex: João Silva" required />
+            </div>
+            <div>
+              <label class="required" for="whatsapp">WhatsApp</label>
+              <input id="whatsapp" name="whatsapp" type="tel" inputmode="numeric" autocomplete="tel" placeholder="(11) 99999-9999" required />
+            </div>
+          </div>
+
+          <div class="row">
+            <div>
+              <label class="required" for="empresa">School name <span style="opacity:.7">/ Nome da escola</span></label>
+              <input id="empresa" name="empresa" type="text" autocomplete="organization" placeholder="Ex: XYZ International School" required />
+            </div>
+            <div>
+              <label for="cidadeUf">City / Country <span style="opacity:.7">/ Cidade / País</span></label>
+              <input id="cidadeUf" name="cidadeUf" type="text" placeholder="Ex: São Paulo / Brazil" />
+            </div>
+          </div>
+
+          <div class="row">
+            <div>
+              <label class="required" for="numeroAlunos">Number of students <span style="opacity:.7">/ Nº de alunos</span></label>
+              <select id="numeroAlunos" name="numeroAlunos" required>
+                <option value="">Select... / Selecione...</option>
+                <option>Up to 100 / Até 100</option>
+                <option>100–200</option>
+                <option>200–400</option>
+                <option>400–800</option>
+                <option>800–1500</option>
+                <option>Above 1500 / Acima de 1500</option>
+              </select>
+            </div>
+            <div>
+              <label class="required" for="objetivo">Objective <span style="opacity:.7">/ Objetivo</span></label>
+              <select id="objetivo" name="objetivo" required>
+                <option value="">Select... / Selecione...</option>
+                <option>Integrate enrollment and re-enrollment strategically / Integrar matrícula e rematrícula estrategicamente</option>
+                <option>Evaluate current profitability model / Avaliar o modelo atual de rentabilidade</option>
+                <option>Increase new enrollment only / Aumentar apenas novas matrículas</option>
+                <option>Improve re-enrollment only / Melhorar apenas rematrícula</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- tracking (same pattern as valuation) -->
+          <input type="hidden" id="utm_source" name="utm_source" />
+          <input type="hidden" id="utm_medium" name="utm_medium" />
+          <input type="hidden" id="utm_campaign" name="utm_campaign" />
+          <input type="hidden" id="utm_content" name="utm_content" />
+          <input type="hidden" id="utm_term" name="utm_term" />
+          <input type="hidden" id="page_path" name="page_path" />
+          <input type="hidden" id="timestamp" name="timestamp" />
+
+          <div class="cta-row" style="margin-top:0.35rem;">
+            <button id="submit-btn" type="submit" class="btn btn-primary">Send</button>
+            <button id="whats-btn" type="button" class="btn btn-secondary">WhatsApp</button>
+          </div>
+
+          <p id="form-status" class="status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap">© <span id="year"></span> Straggia Consultoria — Strategic advisory for international schools.</div>
+  </footer>
+
+  <script>
+    (() => {
+      // ===== CONFIG =====
+      const WHATSAPP_NUMBER = "5516996317472";
+      const LEAD_ENDPOINT = "/api/leads";
+      const SEGMENTO = "EDUCATION";
+      const PAGINA = "/lp/atracta";
+      // ==================
+
+      const form = document.getElementById("lead-form");
+      const whatsappInput = document.getElementById("whatsapp");
+      const statusEl = document.getElementById("form-status");
+      const submitBtn = document.getElementById("submit-btn");
+      const whatsBtn = document.getElementById("whats-btn");
+
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      const formatWhatsapp = (value) => {
+        const digits = (value || "").replace(/\D/g, "").slice(0, 11);
+        if (digits.length <= 2) return digits;
+        if (digits.length <= 6) return `(${digits.slice(0, 2)}) ${digits.slice(2)}`;
+        if (digits.length <= 10) return `(${digits.slice(0, 2)}) ${digits.slice(2, 6)}-${digits.slice(6)}`;
+        return `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7)}`;
+      };
+
+      const setStatus = (type, message) => {
+        statusEl.dataset.type = type;
+        statusEl.textContent = message;
+      };
+
+      const fillTrackingFields = () => {
+        const params = new URLSearchParams(window.location.search);
+        ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"].forEach((key) => {
+          const el = document.getElementById(key);
+          el.value = params.get(key) || "";
+        });
+        document.getElementById("page_path").value = window.location.pathname;
+        document.getElementById("timestamp").value = new Date().toISOString();
+      };
+
+      const getPayload = () => {
+        const fd = new FormData(form);
+
+        const nome = (fd.get("nome") || "").toString().trim();
+        const whatsapp = (fd.get("whatsapp") || "").toString().trim();
+        const empresa = (fd.get("empresa") || "").toString().trim();
+        const cidadeUf = (fd.get("cidadeUf") || "").toString().trim();
+        const numeroAlunos = (fd.get("numeroAlunos") || "").toString().trim();
+        const objetivo = (fd.get("objetivo") || "").toString().trim();
+
+        return {
+          nome_completo: nome,
+          whatsapp,
+          empresa,
+          cidade_uf: cidadeUf,
+
+          // ✅ keep GAS/Sheet compatibility: always send both keys
+          faturamento_faixa: "",
+          numero_alunos_faixa: numeroAlunos,
+
+          objetivo,
+          objetivo_outro: "",
+
+          utm_source: (fd.get("utm_source") || "").toString().trim(),
+          utm_medium: (fd.get("utm_medium") || "").toString().trim(),
+          utm_campaign: (fd.get("utm_campaign") || "").toString().trim(),
+          utm_content: (fd.get("utm_content") || "").toString().trim(),
+          utm_term: (fd.get("utm_term") || "").toString().trim(),
+          page_path: (fd.get("page_path") || "").toString().trim(),
+          timestamp_iso: (fd.get("timestamp") || "").toString().trim(),
+          user_agent: navigator.userAgent,
+
+          segmento: SEGMENTO,
+          pagina: PAGINA
+        };
+      };
+
+      const validate = (p) => {
+        if (!p.nome_completo || !p.whatsapp || !p.empresa || !p.numero_alunos_faixa || !p.objetivo) {
+          return "Please fill all required fields. / Preencha os campos obrigatórios.";
+        }
+        if (p.nome_completo.length < 5 || p.nome_completo.split(/\s+/).length < 2) {
+          return "Please enter full name. / Informe nome e sobrenome.";
+        }
+        const digits = p.whatsapp.replace(/\D/g, "");
+        if (digits.length < 10) return "Invalid WhatsApp (with DDD). / WhatsApp inválido (com DDD).";
+        return "";
+      };
+
+      const buildWhatsAppLink = (p) => {
+        const text =
+`Hello! I want to discuss Enrollment + Re-enrollment strategy.
+
+School: ${p.empresa || "-"}
+City/Country: ${p.cidade_uf || "-"}
+Students: ${p.numero_alunos_faixa || "-"}
+Objective: ${p.objetivo || "-"}`;
+
+        return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
+      };
+
+      const openWhats = () => {
+        const payload = getPayload();
+        window.open(buildWhatsAppLink(payload), "_blank", "noopener,noreferrer");
+      };
+
+      fillTrackingFields();
+
+      whatsappInput.addEventListener("input", (event) => {
+        event.target.value = formatWhatsapp(event.target.value);
+      });
+
+      document.getElementById("cta-whatsapp-top").addEventListener("click", (e) => {
+        e.preventDefault();
+        openWhats();
+      });
+
+      whatsBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        openWhats();
+      });
+
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        const payload = getPayload();
+        const error = validate(payload);
+        if (error) {
+          setStatus("error", error);
+          return;
+        }
+
+        submitBtn.disabled = true;
+        submitBtn.setAttribute("aria-busy", "true");
+        setStatus("loading", "Sending... / Enviando...");
+
+        try {
+          const response = await fetch(LEAD_ENDPOINT, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+          });
+
+          const data = await response.json().catch(() => null);
+
+          if (!response.ok || (data && data.ok === false)) {
+            const msg = (data && data.error) ? data.error : "Send failed.";
+            throw new Error(msg);
+          }
+
+          setStatus("success", "Sent. We’ll get back to you. / Enviado. Retornaremos em breve.");
+          form.reset();
+          fillTrackingFields();
+        } catch (err) {
+          setStatus("error", (err && err.message ? err.message : "Could not send.") + " Use WhatsApp.");
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.removeAttribute("aria-busy");
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
