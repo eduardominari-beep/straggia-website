@@ -522,8 +522,27 @@ Objective: ${p.objetivo || "-"}`;
         return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
       };
 
-      const openWhats = () => {
+      // --- GA4 helpers (events) ---
+      const track = (eventName, params = {}) => {
+        if (typeof gtag === "function") {
+          gtag("event", eventName, {
+            event_category: "conversion",
+            ...params
+          });
+        }
+      };
+
+      const openWhats = (origin) => {
         const payload = getPayload();
+
+        // ✅ event: whatsapp_click
+        track("whatsapp_click", {
+          event_label: "atracta",
+          origin: origin || "unknown",
+          value: 1,
+          page_path: window.location.pathname
+        });
+
         window.open(buildWhatsAppLink(payload), "_blank", "noopener,noreferrer");
       };
 
@@ -535,12 +554,12 @@ Objective: ${p.objetivo || "-"}`;
 
       document.getElementById("cta-whatsapp-top").addEventListener("click", (e) => {
         e.preventDefault();
-        openWhats();
+        openWhats("cta_whatsapp_top");
       });
 
       whatsBtn.addEventListener("click", (e) => {
         e.preventDefault();
-        openWhats();
+        openWhats("whats_btn");
       });
 
       form.addEventListener("submit", async (event) => {
@@ -552,6 +571,13 @@ Objective: ${p.objetivo || "-"}`;
           setStatus("error", error);
           return;
         }
+
+        // ✅ event: form_submit
+        track("form_submit", {
+          event_label: "atracta",
+          value: 1,
+          page_path: window.location.pathname
+        });
 
         submitBtn.disabled = true;
         submitBtn.setAttribute("aria-busy", "true");
