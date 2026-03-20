@@ -9,7 +9,9 @@ import SeoJsonLd from "@/components/SeoJsonLd"
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.straggia.com"
 
 // ✅ GA4 (Measurement ID)
-const GA4_ID = "G-F32C4E85KT"
+const GT_ID = "GT-KF8NQMZM"        // Google tag hub
+const GA4_ID = "G-F32C4E85KT"      // GA4
+const ADS_ID = "AW-17884471548"    // Google Ads
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
 const poppins = Poppins({ subsets: ["latin"], weight: ["400", "500", "600", "700"], variable: "--font-poppins" })

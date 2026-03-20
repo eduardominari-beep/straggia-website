@@ -1,4 +1,3 @@
-// app/blog/page.tsx
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -14,18 +13,40 @@ export const metadata = getSEOMetadata({
   path: "/blog",
 })
 
+function dateToSortValue(dateValue?: string) {
+  if (!dateValue) return 0
+
+  const [datePart] = dateValue.split("T")
+  const [year, month, day] = datePart.split("-").map(Number)
+
+  if (!year || !month || !day) return 0
+
+  return new Date(year, month - 1, day).getTime()
+}
+
+function formatBrazilianDate(dateValue?: string) {
+  if (!dateValue) return ""
+
+  const [datePart] = dateValue.split("T")
+  const [year, month, day] = datePart.split("-").map(Number)
+
+  if (!year || !month || !day) return dateValue
+
+  return new Intl.DateTimeFormat("pt-BR", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  }).format(new Date(year, month - 1, day))
+}
+
 export default function BlogPage() {
   const postsRaw = getAllPosts()
-  const posts = [...postsRaw].sort(
-    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-  )
+  const posts = [...postsRaw].sort((a, b) => dateToSortValue(b.date) - dateToSortValue(a.date))
 
   return (
     <main className="min-h-screen bg-background">
-      {/* Navbar fixa */}
       <Navbar />
 
-      {/* Header */}
       <header className="bg-card border-b border-border pt-28 md:pt-32 pb-8">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
@@ -36,6 +57,7 @@ export default function BlogPage() {
             <h1 className="text-4xl md:text-5xl font-display font-bold text-balance mb-4">
               <span className="text-primary">Conteúdo</span> Estratégico
             </h1>
+
             <p className="text-xl text-muted-foreground text-pretty max-w-2xl mx-auto leading-relaxed">
               Insights práticos e metodologias comprovadas para acelerar seus resultados
             </p>
@@ -43,7 +65,6 @@ export default function BlogPage() {
         </div>
       </header>
 
-      {/* Posts */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {posts.length > 0 ? (
           <div className="space-y-8">
@@ -54,16 +75,13 @@ export default function BlogPage() {
               >
                 <article>
                   <CardHeader>
-                    <div className="flex items-center gap-4 mb-2">
-                      <time className="text-sm text-muted-foreground" dateTime={post.date}>
-                        {new Date(post.date).toLocaleDateString("pt-BR", {
-                          year: "numeric",
-                          month: "long",
-                          day: "numeric",
-                        })}
+                    <div className="flex items-center gap-4 mb-2 flex-wrap">
+                      <time className="text-sm text-muted-foreground" dateTime={post.date ?? ""}>
+                        {formatBrazilianDate(post.date)}
                       </time>
+
                       {!!post.tags?.length && (
-                        <div className="flex gap-2">
+                        <div className="flex gap-2 flex-wrap">
                           {post.tags.map((tag) => (
                             <Badge key={tag} variant="secondary" className="text-xs">
                               {tag}
@@ -80,7 +98,7 @@ export default function BlogPage() {
 
                   <CardContent>
                     <CardDescription className="text-muted-foreground leading-relaxed mb-4 text-base">
-                      {post.description}
+                      {post.description ?? ""}
                     </CardDescription>
 
                     <Button
@@ -111,7 +129,6 @@ export default function BlogPage() {
         )}
       </div>
 
-      {/* Footer */}
       <Footer />
     </main>
   )
