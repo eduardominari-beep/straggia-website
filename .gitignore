@@ -21,3 +21,8 @@ yarn.lock
 # SO / editor
 .DS_Store
 *.log
+
+# Obra Hunter generated artifacts
+lib/obra-hunter-ai/data/runs/
+lib/obra-hunter-ai/data/raw/live/
+.tmp-compare.json

@@ -1,0 +1,65 @@
+name: obra-hunter-live
+
+on:
+  workflow_dispatch:
+    inputs:
+      run_id:
+        description: "Run id override"
+        required: false
+        default: ""
+  schedule:
+    - cron: "0 11 * * 1"
+
+jobs:
+  run-live:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Prepare run id
+        id: vars
+        run: |
+          if [ -n "${{ github.event.inputs.run_id }}" ]; then
+            echo "run_id=${{ github.event.inputs.run_id }}" >> "$GITHUB_OUTPUT"
+          else
+            echo "run_id=$(date -u +%Y-%m-%dT%H-%M-%SZ)" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Compare live vs fallback
+        run: node lib/obra-hunter-ai/scripts/compare-live-vs-fallback.mjs --out=.tmp-compare.json
+
+      - name: Summarize latest run
+        run: node lib/obra-hunter-ai/scripts/summarize-last-run.mjs
+
+      - name: Compute operational status
+        run: |
+          LIVE_RUN_ID=$(node -e "const fs=require('fs');const p=JSON.parse(fs.readFileSync('.tmp-compare.json','utf8'));process.stdout.write(p.live.runId || '')")
+          node lib/obra-hunter-ai/scripts/operational-status.mjs --run-id=${{ steps.vars.outputs.run_id }} --previous-run-id=$LIVE_RUN_ID
+          echo "RUN_ID=${{ steps.vars.outputs.run_id }}" >> "$GITHUB_ENV"
+
+      - name: Append executive summary
+        if: always()
+        run: |
+          if [ -f "lib/obra-hunter-ai/data/runs/${RUN_ID}/operational-status.md" ]; then
+            cat "lib/obra-hunter-ai/data/runs/${RUN_ID}/operational-status.md" >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "# Operational Status: FAIL" >> "$GITHUB_STEP_SUMMARY"
+            echo "- motivo: operational-status.md não encontrado" >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Upload run artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: obra-hunter-runs-${{ steps.vars.outputs.run_id }}
+          path: |
+            lib/obra-hunter-ai/data/runs/${{ steps.vars.outputs.run_id }}/
+            .tmp-compare.json
