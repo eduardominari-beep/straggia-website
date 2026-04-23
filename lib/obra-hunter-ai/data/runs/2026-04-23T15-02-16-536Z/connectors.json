@@ -1,0 +1,684 @@
+[
+  {
+    "connector": "geosampa",
+    "cityKey": "sao-paulo",
+    "startedAt": "2026-04-23T15:02:16.536Z",
+    "finishedAt": "2026-04-23T15:02:16.706Z",
+    "ok": false,
+    "signals": [],
+    "requestUrl": "https://wfs.geosampa.prefeitura.sp.gov.br/geoserver/ows?service=WFS&version=2.0.0&request=GetFeature&outputFormat=application%2Fjson&srsName=EPSG%3A4326&count=50&typeNames=geosampa%3Aacessos_livre",
+    "error": "TypeError: fetch failed"
+  },
+  {
+    "connector": "geosampa",
+    "cityKey": "guarulhos",
+    "startedAt": "2026-04-23T15:02:16.706Z",
+    "finishedAt": "2026-04-23T15:02:16.722Z",
+    "ok": false,
+    "signals": [],
+    "requestUrl": "https://wfs.geosampa.prefeitura.sp.gov.br/geoserver/ows?service=WFS&version=2.0.0&request=GetFeature&outputFormat=application%2Fjson&srsName=EPSG%3A4326&count=50&typeNames=geosampa%3Aacessos_livre",
+    "error": "TypeError: fetch failed"
+  },
+  {
+    "connector": "geosampa",
+    "cityKey": "osasco",
+    "startedAt": "2026-04-23T15:02:16.722Z",
+    "finishedAt": "2026-04-23T15:02:16.728Z",
+    "ok": false,
+    "signals": [],
+    "requestUrl": "https://wfs.geosampa.prefeitura.sp.gov.br/geoserver/ows?service=WFS&version=2.0.0&request=GetFeature&outputFormat=application%2Fjson&srsName=EPSG%3A4326&count=50&typeNames=geosampa%3Aacessos_livre",
+    "error": "TypeError: fetch failed"
+  },
+  {
+    "connector": "geosampa",
+    "cityKey": "barueri",
+    "startedAt": "2026-04-23T15:02:16.728Z",
+    "finishedAt": "2026-04-23T15:02:16.748Z",
+    "ok": false,
+    "signals": [],
+    "requestUrl": "https://wfs.geosampa.prefeitura.sp.gov.br/geoserver/ows?service=WFS&version=2.0.0&request=GetFeature&outputFormat=application%2Fjson&srsName=EPSG%3A4326&count=50&typeNames=geosampa%3Aacessos_livre",
+    "error": "TypeError: fetch failed"
+  },
+  {
+    "connector": "barueri-pca",
+    "cityKey": "barueri",
+    "startedAt": "2026-04-23T15:02:16.748Z",
+    "finishedAt": "2026-04-23T15:02:18.347Z",
+    "ok": true,
+    "mode": "fixture-fallback",
+    "recordsCollected": 15,
+    "signals": [
+      {
+        "source": "Barueri PCA 2026",
+        "sourceAgency": "OBRAS",
+        "cityKey": "barueri",
+        "probableCompany": "Contratação pública em aberto (empresa a definir)",
+        "address": "Barueri/SP (diversos bairros ou próprios municipais)",
+        "lotLocation": "Diversos locais",
+        "probableWorkType": "MANUTENCAO CORRETIVA E PREVENTIVA DAS CICLOVIAS E CICLOFAIXAS INSTALADAS NO MUNICIPIO DE BARUERI",
+        "probablePhase": "fixture_fallback",
+        "approachKeywords": [
+          "manutenção"
+        ],
+        "detectionReason": "Planejamento de contratação pública com potencial de obra/instalação. Valor estimado R$ 2.950.000,00.",
+        "documentId": "2.07.0058/2026",
+        "signals": [
+          "novo_alvara",
+          "expansao_empresarial"
+        ],
+        "evidenceUrl": "https://www.barueri.sp.gov.br/Transparencia/downloads/Planejamento/PCA_2026_-_Cronograma_de_Contrata%C3%A7%C3%B5es_OBRAS.pdf?ent=1&np=1",
+        "capturedAt": "2026-04-23T14:00:00Z",
+        "observations": "Unidade requisitante: OBRAS."
+      },
+      {
+        "source": "Barueri PCA 2026",
+        "sourceAgency": "OBRAS",
+        "cityKey": "barueri",
+        "probableCompany": "Contratação pública em aberto (empresa a definir)",
+        "address": "Barueri/SP (diversos bairros ou próprios municipais)",
+        "lotLocation": "Diversos locais",
+        "probableWorkType": "MANUTENCAO PREVENTIVA E CORRETIVA DAS DEPENDENCIAS DA PRACA DAS ARTES - JARDIM DOS CAMARGOS",
+        "probablePhase": "fixture_fallback",
+        "approachKeywords": [
+          "manutenção"
+        ],
+        "detectionReason": "Planejamento de contratação pública com potencial de obra/instalação. Valor estimado R$ 3.576.000,00.",
+        "documentId": "2.07.0059/2026",
+        "signals": [
+          "novo_alvara",
+          "expansao_empresarial",
+          "uso_comercial"
+        ],
+        "evidenceUrl": "https://www.barueri.sp.gov.br/Transparencia/downloads/Planejamento/PCA_2026_-_Cronograma_de_Contrata%C3%A7%C3%B5es_OBRAS.pdf?ent=1&np=1",
+        "capturedAt": "2026-04-23T14:00:00Z",
+        "observations": "Unidade requisitante: OBRAS."
+      },
+      {
+        "source": "Barueri PCA 2026",
+        "sourceAgency": "OBRAS",
+        "cityKey": "barueri",
+        "probableCompany": "Contratação pública em aberto (empresa a definir)",
+        "address": "Barueri/SP (diversos bairros ou próprios municipais)",
+        "lotLocation": "Diversos locais",
+        "probableWorkType": "REVITALIZACAO E CONSERVACAO DE MONUMENTOS DO MUNICIPIO DE BARUERI",
+        "probablePhase": "fixture_fallback",
+        "approachKeywords": [
+          "obra civil"
+        ],
+        "detectionReason": "Planejamento de contratação pública com potencial de obra/instalação. Valor estimado R$ 3.200.000,00.",
+        "documentId": "2.07.0061/2026",
+        "signals": [
+          "novo_alvara",
+          "expansao_empresarial"
+        ],
+        "evidenceUrl": "https://www.barueri.sp.gov.br/Transparencia/downloads/Planejamento/PCA_2026_-_Cronograma_de_Contrata%C3%A7%C3%B5es_OBRAS.pdf?ent=1&np=1",
+        "capturedAt": "2026-04-23T14:00:00Z",
+        "observations": "Unidade requisitante: OBRAS."
+      },
+      {
+        "source": "Barueri PCA 2026",
+        "sourceAgency": "OBRAS",
+        "cityKey": "barueri",
+        "probableCompany": "Contratação pública em aberto (empresa a definir)",
+        "address": "Barueri/SP (diversos bairros ou próprios municipais)",
+        "lotLocation": "Diversos locais",
+        "probableWorkType": "SERVICOS DE CONSERVACAO E MANUTENCAO DO BOULEVARD CENTRAL, INCLUINDO LIMPEZA E AJARDINAMENTO",
+        "probablePhase": "fixture_fallback",
+        "approachKeywords": [
+          "manutenção"
+        ],
+        "detectionReason": "Planejamento de contratação pública com potencial de obra/instalação. Valor estimado R$ 1.350.000,00.",
+        "documentId": "2.07.0062/2026",
+        "signals": [
+          "novo_alvara",
+          "expansao_empresarial",
+          "uso_comercial"
+        ],
+        "evidenceUrl": "https://www.barueri.sp.gov.br/Transparencia/downloads/Planejamento/PCA_2026_-_Cronograma_de_Contrata%C3%A7%C3%B5es_OBRAS.pdf?ent=1&np=1",
+        "capturedAt": "2026-04-23T14:00:00Z",
+        "observations": "Unidade requisitante: OBRAS."
+      },
+      {
+        "source": "Barueri PCA 2026",
+        "sourceAgency": "OBRAS",
+        "cityKey": "barueri",
+        "probableCompany": "Contratação pública em aberto (empresa a definir)",
+        "address": "Barueri/SP (diversos bairros ou próprios municipais)",
+        "lotLocation": "Diversos locais",
+        "probableWorkType": "FORNECIMENTO E INSTALACAO DE PLAYGROUND E EQUIPAMENTOS DE GINASTICA AO AR LIVRE EM DIVERSOS LOCAIS DO MUNICIPIO",
+        "probablePhase": "fixture_fallback",
+        "approachKeywords": [
+          "instalações",
+          "elétrica"
+        ],
+        "detectionReason": "Planejamento de contratação pública com potencial de obra/instalação. Valor estimado R$ 8.283.148,95.",
+        "documentId": "2.07.0063/2026",
+        "signals": [
+          "novo_alvara",
+          "expansao_empresarial",
+          "grande_metragem",
+          "uso_industrial"
+        ],
+        "evidenceUrl": "https://www.barueri.sp.gov.br/Transparencia/downloads/Planejamento/PCA_2026_-_Cronograma_de_Contrata%C3%A7%C3%B5es_OBRAS.pdf?ent=1&np=1",
+        "capturedAt": "2026-04-23T14:00:00Z",
+        "observations": "Unidade requisitante: OBRAS."
+      },
+      {
+        "source": "Barueri PCA 2026",
+        "sourceAgency": "DIVERSAS SECRETARIAS",
+        "cityKey": "barueri",
+        "probableCompany": "Contratação pública em aberto (empresa a definir)",
+        "address": "Barueri/SP (diversos bairros ou próprios municipais)",
+        "lotLocation": "Diversos locais",
+        "probableWorkType": "CONSERVACAO E MANUTENCAO DE CORREGOS E GALERIA DE AGUAS PLUVIAIS EM AREAS DE SERVIDAO E VIAS PUBLICAS",
+        "probablePhase": "fixture_fallback",
+        "approachKeywords": [
+          "manutenção"
+        ],
+        "detectionReason": "Planejamento de contratação pública com potencial de obra/instalação. Valor estimado R$ 15.750.000,00.",
+        "documentId": "2.07.0064/2026",
+        "signals": [
+          "novo_alvara",
+          "expansao_empresarial",
+          "grande_metragem"
+        ],
+        "evidenceUrl": "https://www.barueri.sp.gov.br/Transparencia/downloads/Planejamento/PCA_2026_-_Cronograma_de_Contrata%C3%A7%C3%B5es_OBRAS.pdf?ent=1&np=1",
+        "capturedAt": "2026-04-23T14:00:00Z",
+        "observations": "Unidade requisitante: DIVERSAS SECRETARIAS."
+      },
+      {
+        "source": "Barueri PCA 2026",
+        "sourceAgency": "DIVERSAS SECRETARIAS",
+        "cityKey": "barueri",
+        "probableCompany": "Contratação pública em aberto (empresa a definir)",
+        "address": "Barueri/SP (diversos bairros ou próprios municipais)",
+        "lotLocation": "Diversos locais",
+        "probableWorkType": "ENGENHARIA ELETRICA PARA MANUTENCAO CORRETIVA E ASSISTENCIA TECNICA EM CABINES PRIMARIAS DAS UNIDADES DA PREFEITURA",
+        "probablePhase": "fixture_fallback",
+        "approachKeywords": [
+          "instalações",
+          "elétrica",
+          "manutenção"
+        ],
+        "detectionReason": "Planejamento de contratação pública com potencial de obra/instalação. Valor estimado R$ 9.508.225,56.",
+        "documentId": "2.08.0065/2026",
+        "signals": [
+          "novo_alvara",
+          "expansao_empresarial",
+          "grande_metragem",
+          "uso_industrial"
+        ],
+        "evidenceUrl": "https://www.barueri.sp.gov.br/Transparencia/downloads/Planejamento/PCA_2026_-_Cronograma_de_Contrata%C3%A7%C3%B5es_OBRAS.pdf?ent=1&np=1",
+        "capturedAt": "2026-04-23T14:00:00Z",
+        "observations": "Unidade requisitante: DIVERSAS SECRETARIAS."
+      },
+      {
+        "source": "Barueri PCA 2026",
+        "sourceAgency": "OBRAS",
+        "cityKey": "barueri",
+        "probableCompany": "Contratação pública em aberto (empresa a definir)",
+        "address": "Barueri/SP (diversos bairros ou próprios municipais)",
+        "lotLocation": "LOTE 01",
+        "probableWorkType": "EXECUCAO DE RECAPEAMENTO ASFALTICO E CORRELATOS EM DIVERSOS BAIRROS - LOTE 01",
+        "probablePhase": "fixture_fallback",
+        "approachKeywords": [
+          "pavimentação",
+          "asfalto"
+        ],
+        "detectionReason": "Planejamento de contratação pública com potencial de obra/instalação. Valor estimado R$ 27.105.878,86.",
+        "documentId": "2.08.0068/2026",
+        "signals": [
+          "novo_alvara",
+          "expansao_empresarial",
+          "grande_metragem",
+          "uso_comercial"
+        ],
+        "evidenceUrl": "https://www.barueri.sp.gov.br/Transparencia/downloads/Planejamento/PCA_2026_-_Cronograma_de_Contrata%C3%A7%C3%B5es_OBRAS.pdf?ent=1&np=1",
+        "capturedAt": "2026-04-23T14:00:00Z",
+        "observations": "Unidade requisitante: OBRAS."
+      },
+      {
+        "source": "Barueri PCA 2026",
+        "sourceAgency": "OBRAS",
+        "cityKey": "barueri",
+        "probableCompany": "Contratação pública em aberto (empresa a definir)",
+        "address": "Barueri/SP (diversos bairros ou próprios municipais)",
+        "lotLocation": "LOTE 02",
+        "probableWorkType": "EXECUCAO DE RECAPEAMENTO ASFALTICO E CORRELATOS EM DIVERSOS BAIRROS - LOTE 02",
+        "probablePhase": "fixture_fallback",
+        "approachKeywords": [
+          "pavimentação",
+          "asfalto"
+        ],
+        "detectionReason": "Planejamento de contratação pública com potencial de obra/instalação. Valor estimado R$ 27.088.491,20.",
+        "documentId": "2.08.0069/2026",
+        "signals": [
+          "novo_alvara",
+          "expansao_empresarial",
+          "grande_metragem",
+          "uso_comercial"
+        ],
+        "evidenceUrl": "https://www.barueri.sp.gov.br/Transparencia/downloads/Planejamento/PCA_2026_-_Cronograma_de_Contrata%C3%A7%C3%B5es_OBRAS.pdf?ent=1&np=1",
+        "capturedAt": "2026-04-23T14:00:00Z",
+        "observations": "Unidade requisitante: OBRAS."
+      },
+      {
+        "source": "Barueri PCA 2026",
+        "sourceAgency": "OBRAS",
+        "cityKey": "barueri",
+        "probableCompany": "Contratação pública em aberto (empresa a definir)",
+        "address": "Barueri/SP (diversos bairros ou próprios municipais)",
+        "lotLocation": "LOTE 03",
+        "probableWorkType": "EXECUCAO DE RECAPEAMENTO ASFALTICO E CORRELATOS EM DIVERSOS BAIRROS - LOTE 03",
+        "probablePhase": "fixture_fallback",
+        "approachKeywords": [
+          "pavimentação",
+          "asfalto"
+        ],
+        "detectionReason": "Planejamento de contratação pública com potencial de obra/instalação. Valor estimado R$ 27.071.105,17.",
+        "documentId": "2.08.0070/2026",
+        "signals": [
+          "novo_alvara",
+          "expansao_empresarial",
+          "grande_metragem",
+          "uso_comercial"
+        ],
+        "evidenceUrl": "https://www.barueri.sp.gov.br/Transparencia/downloads/Planejamento/PCA_2026_-_Cronograma_de_Contrata%C3%A7%C3%B5es_OBRAS.pdf?ent=1&np=1",
+        "capturedAt": "2026-04-23T14:00:00Z",
+        "observations": "Unidade requisitante: OBRAS."
+      },
+      {
+        "source": "Barueri PCA 2026",
+        "sourceAgency": "SSM",
+        "cityKey": "barueri",
+        "probableCompany": "Contratação pública em aberto (empresa a definir)",
+        "address": "Barueri/SP (diversos bairros ou próprios municipais)",
+        "lotLocation": "Diversos locais",
+        "probableWorkType": "FORNECIMENTO E APLICACAO DE CONCRETO ASFALTICO PARA EXECUCAO DE TAPA VALAS E ONDULACOES TRANSVERSAIS",
+        "probablePhase": "fixture_fallback",
+        "approachKeywords": [
+          "pavimentação",
+          "asfalto"
+        ],
+        "detectionReason": "Planejamento de contratação pública com potencial de obra/instalação. Valor estimado R$ 4.848.480,00.",
+        "documentId": "2.08.0076/2026",
+        "signals": [
+          "novo_alvara",
+          "expansao_empresarial"
+        ],
+        "evidenceUrl": "https://www.barueri.sp.gov.br/Transparencia/downloads/Planejamento/PCA_2026_-_Cronograma_de_Contrata%C3%A7%C3%B5es_OBRAS.pdf?ent=1&np=1",
+        "capturedAt": "2026-04-23T14:00:00Z",
+        "observations": "Unidade requisitante: SSM."
+      },
+      {
+        "source": "Barueri PCA 2026",
+        "sourceAgency": "OBRAS",
+        "cityKey": "barueri",
+        "probableCompany": "Contratação pública em aberto (empresa a definir)",
+        "address": "Barueri/SP (diversos bairros ou próprios municipais)",
+        "lotLocation": "Diversos locais",
+        "probableWorkType": "LIMPEZA E MANUTENCAO PREVENTIVA E CORRETIVA DE TELHADOS, CALHAS, RUFOS E CONDUTORES DE AGUAS PLUVIAIS",
+        "probablePhase": "fixture_fallback",
+        "approachKeywords": [
+          "cobertura",
+          "pintura",
+          "manutenção"
+        ],
+        "detectionReason": "Planejamento de contratação pública com potencial de obra/instalação. Valor estimado R$ 2.193.488,98.",
+        "documentId": "2.09.0081/2026",
+        "signals": [
+          "novo_alvara",
+          "expansao_empresarial"
+        ],
+        "evidenceUrl": "https://www.barueri.sp.gov.br/Transparencia/downloads/Planejamento/PCA_2026_-_Cronograma_de_Contrata%C3%A7%C3%B5es_OBRAS.pdf?ent=1&np=1",
+        "capturedAt": "2026-04-23T14:00:00Z",
+        "observations": "Unidade requisitante: OBRAS."
+      },
+      {
+        "source": "Barueri PCA 2026",
+        "sourceAgency": "DIVERSAS SECRETARIAS",
+        "cityKey": "barueri",
+        "probableCompany": "Contratação pública em aberto (empresa a definir)",
+        "address": "Barueri/SP (diversos bairros ou próprios municipais)",
+        "lotLocation": "Diversos locais",
+        "probableWorkType": "FORNECIMENTO E INSTALACAO DE TELA DE PROTECAO PARA RESERVATORIOS/CAIXAS DAGUA EM DIVERSOS PROPRIOS MUNICIPAIS",
+        "probablePhase": "fixture_fallback",
+        "approachKeywords": [
+          "instalações",
+          "elétrica"
+        ],
+        "detectionReason": "Planejamento de contratação pública com potencial de obra/instalação. Valor estimado R$ 647.172,01.",
+        "documentId": "2.10.0091/2026",
+        "signals": [
+          "novo_alvara",
+          "expansao_empresarial",
+          "uso_industrial"
+        ],
+        "evidenceUrl": "https://www.barueri.sp.gov.br/Transparencia/downloads/Planejamento/PCA_2026_-_Cronograma_de_Contrata%C3%A7%C3%B5es_OBRAS.pdf?ent=1&np=1",
+        "capturedAt": "2026-04-23T14:00:00Z",
+        "observations": "Unidade requisitante: DIVERSAS SECRETARIAS."
+      },
+      {
+        "source": "Barueri PCA 2026",
+        "sourceAgency": "OBRAS",
+        "cityKey": "barueri",
+        "probableCompany": "Contratação pública em aberto (empresa a definir)",
+        "address": "Barueri/SP (diversos bairros ou próprios municipais)",
+        "lotLocation": "Diversos locais",
+        "probableWorkType": "ATUALIZACAO E OTIMIZACAO DA TABELA DE PRECOS UNITARIOS DE SERVICOS E OBRAS DO MUNICIPIO DE BARUERI",
+        "probablePhase": "fixture_fallback",
+        "approachKeywords": [
+          "obra civil"
+        ],
+        "detectionReason": "Planejamento de contratação pública com potencial de obra/instalação. Valor estimado R$ 390.000,00.",
+        "documentId": "2.11.0092/2026",
+        "signals": [
+          "novo_alvara",
+          "expansao_empresarial"
+        ],
+        "evidenceUrl": "https://www.barueri.sp.gov.br/Transparencia/downloads/Planejamento/PCA_2026_-_Cronograma_de_Contrata%C3%A7%C3%B5es_OBRAS.pdf?ent=1&np=1",
+        "capturedAt": "2026-04-23T14:00:00Z",
+        "observations": "Unidade requisitante: OBRAS."
+      },
+      {
+        "source": "Barueri PCA 2026",
+        "sourceAgency": "OBRAS",
+        "cityKey": "barueri",
+        "probableCompany": "Contratação pública em aberto (empresa a definir)",
+        "address": "Barueri/SP (diversos bairros ou próprios municipais)",
+        "lotLocation": "Diversos locais",
+        "probableWorkType": "CONSERVACAO DE ESTRUTURAS METALICAS",
+        "probablePhase": "fixture_fallback",
+        "approachKeywords": [
+          "obra civil"
+        ],
+        "detectionReason": "Planejamento de contratação pública com potencial de obra/instalação. Valor estimado R$ 6.262.617,69.",
+        "documentId": "2.05.0046/2026",
+        "signals": [
+          "novo_alvara",
+          "expansao_empresarial",
+          "grande_metragem"
+        ],
+        "evidenceUrl": "https://www.barueri.sp.gov.br/Transparencia/downloads/Planejamento/PCA_2026_-_Cronograma_de_Contrata%C3%A7%C3%B5es_OBRAS.pdf?ent=1&np=1",
+        "capturedAt": "2026-04-23T14:00:00Z",
+        "observations": "Unidade requisitante: OBRAS."
+      }
+    ],
+    "requestUrl": "https://www.barueri.sp.gov.br/Transparencia/downloads/Planejamento/PCA_2026_-_Cronograma_de_Contrata%C3%A7%C3%B5es_OBRAS.pdf?ent=1&np=1",
+    "evidence": {
+      "fixturePath": "/workspace/straggia-website/lib/obra-hunter-ai/data/fixtures/barueri-pca.fixture.json",
+      "capturedAt": "2026-04-23T14:00:00Z"
+    },
+    "liveError": "TypeError: fetch failed"
+  },
+  {
+    "connector": "licitacoes-monitor",
+    "cityKey": "multi",
+    "startedAt": "2026-04-23T15:02:18.347Z",
+    "finishedAt": "2026-04-23T15:02:19.435Z",
+    "ok": true,
+    "mode": "mixed",
+    "recordsCollected": 10,
+    "signals": [
+      {
+        "source": "Monitor de Licitações",
+        "sourceAgency": "Secretaria de Suprimentos",
+        "cityKey": "barueri",
+        "probableCompany": "Fornecedor/empreiteira a contratar",
+        "address": "barueri/SP (a confirmar no edital)",
+        "lotLocation": "A confirmar",
+        "probableWorkType": "Contratação de Empresa para Reparos de Telhado, Pintura Externa e Manutenção nas Passarelas de Circulação no Conjunto Habitacional Vale dos Rios - Vale do Sol",
+        "probablePhase": "fixture_fallback",
+        "approachKeywords": [
+          "licitação",
+          "obra pública",
+          "prospecção edital"
+        ],
+        "detectionReason": "Publicação de contratação/serviço de engenharia com potencial de obra.",
+        "documentId": "SO-029-2026",
+        "signals": [
+          "expansao_empresarial",
+          "novo_alvara"
+        ],
+        "evidenceUrl": "https://alertalicitacao.com.br/!municipios/3505708",
+        "capturedAt": "2026-04-23T14:30:00Z",
+        "observations": "Ler edital para escopo técnico, exigências e cronograma de visita."
+      },
+      {
+        "source": "Monitor de Licitações",
+        "sourceAgency": "Prefeitura de Barueri",
+        "cityKey": "barueri",
+        "probableCompany": "Fornecedor/empreiteira a contratar",
+        "address": "barueri/SP (a confirmar no edital)",
+        "lotLocation": "A confirmar",
+        "probableWorkType": "Serviços contínuos comuns de engenharia para operação, zeladoria e manutenção de reservatório de contenção de cheias",
+        "probablePhase": "fixture_fallback",
+        "approachKeywords": [
+          "licitação",
+          "obra pública",
+          "prospecção edital"
+        ],
+        "detectionReason": "Publicação de contratação/serviço de engenharia com potencial de obra.",
+        "documentId": "SO-023-2026",
+        "signals": [
+          "expansao_empresarial",
+          "novo_alvara"
+        ],
+        "evidenceUrl": "https://alertalicitacao.com.br/!municipios/3505708",
+        "capturedAt": "2026-04-23T14:30:00Z",
+        "observations": "Ler edital para escopo técnico, exigências e cronograma de visita."
+      },
+      {
+        "source": "Monitor de Licitações",
+        "sourceAgency": "Município de Barueri",
+        "cityKey": "barueri",
+        "probableCompany": "Fornecedor/empreiteira a contratar",
+        "address": "barueri/SP (a confirmar no edital)",
+        "lotLocation": "A confirmar",
+        "probableWorkType": "Instalação de infraestrutura de rede lógica, monitoramento e elétrica na DISE",
+        "probablePhase": "fixture_fallback",
+        "approachKeywords": [
+          "licitação",
+          "obra pública",
+          "prospecção edital"
+        ],
+        "detectionReason": "Publicação de contratação/serviço de engenharia com potencial de obra.",
+        "documentId": "PNCP-000006-2026",
+        "signals": [
+          "expansao_empresarial",
+          "novo_alvara",
+          "uso_industrial"
+        ],
+        "evidenceUrl": "https://alertalicitacao.com.br/!municipios/3505708",
+        "capturedAt": "2026-04-23T14:30:00Z",
+        "observations": "Ler edital para escopo técnico, exigências e cronograma de visita."
+      },
+      {
+        "source": "Monitor de Licitações",
+        "sourceAgency": "Município de Barueri",
+        "cityKey": "barueri",
+        "probableCompany": "Fornecedor/empreiteira a contratar",
+        "address": "barueri/SP (a confirmar no edital)",
+        "lotLocation": "A confirmar",
+        "probableWorkType": "Reforma geral da Maternal Maria de Menezes",
+        "probablePhase": "fixture_fallback",
+        "approachKeywords": [
+          "licitação",
+          "obra pública",
+          "prospecção edital"
+        ],
+        "detectionReason": "Publicação de contratação/serviço de engenharia com potencial de obra.",
+        "documentId": "REF-MATERNAL-2026",
+        "signals": [
+          "expansao_empresarial",
+          "novo_alvara",
+          "uso_comercial"
+        ],
+        "evidenceUrl": "https://alertalicitacao.com.br/!municipios/3505708",
+        "capturedAt": "2026-04-23T14:30:00Z",
+        "observations": "Ler edital para escopo técnico, exigências e cronograma de visita."
+      },
+      {
+        "source": "Monitor de Licitações",
+        "sourceAgency": "Município de Barueri",
+        "cityKey": "barueri",
+        "probableCompany": "Fornecedor/empreiteira a contratar",
+        "address": "barueri/SP (a confirmar no edital)",
+        "lotLocation": "A confirmar",
+        "probableWorkType": "Recapeamento e sinalização na Avenida Zélia",
+        "probablePhase": "fixture_fallback",
+        "approachKeywords": [
+          "licitação",
+          "obra pública",
+          "prospecção edital"
+        ],
+        "detectionReason": "Publicação de contratação/serviço de engenharia com potencial de obra.",
+        "documentId": "RECAPE-ZELIA",
+        "signals": [
+          "expansao_empresarial",
+          "novo_alvara"
+        ],
+        "evidenceUrl": "https://alertalicitacao.com.br/!municipios/3505708",
+        "capturedAt": "2026-04-23T14:30:00Z",
+        "observations": "Ler edital para escopo técnico, exigências e cronograma de visita."
+      },
+      {
+        "source": "Monitor de Licitações",
+        "sourceAgency": "Prefeitura de Osasco",
+        "cityKey": "osasco",
+        "probableCompany": "Fornecedor/empreiteira a contratar",
+        "address": "osasco/SP (a confirmar no edital)",
+        "lotLocation": "A confirmar",
+        "probableWorkType": "Contratação de empresa para reforma e adequação de unidades escolares municipais",
+        "probablePhase": "fixture_fallback",
+        "approachKeywords": [
+          "licitação",
+          "obra pública",
+          "prospecção edital"
+        ],
+        "detectionReason": "Publicação de contratação/serviço de engenharia com potencial de obra.",
+        "documentId": "OSA-ENG-001",
+        "signals": [
+          "expansao_empresarial",
+          "novo_alvara",
+          "uso_comercial"
+        ],
+        "evidenceUrl": "https://alertalicitacao.com.br/!municipios/3534401",
+        "capturedAt": "2026-04-23T14:30:00Z",
+        "observations": "Ler edital para escopo técnico, exigências e cronograma de visita."
+      },
+      {
+        "source": "Monitor de Licitações",
+        "sourceAgency": "Secretaria de Obras",
+        "cityKey": "osasco",
+        "probableCompany": "Fornecedor/empreiteira a contratar",
+        "address": "osasco/SP (a confirmar no edital)",
+        "lotLocation": "A confirmar",
+        "probableWorkType": "Manutenção predial corretiva em equipamentos públicos",
+        "probablePhase": "fixture_fallback",
+        "approachKeywords": [
+          "licitação",
+          "obra pública",
+          "prospecção edital"
+        ],
+        "detectionReason": "Publicação de contratação/serviço de engenharia com potencial de obra.",
+        "documentId": "OSA-ENG-002",
+        "signals": [
+          "expansao_empresarial",
+          "novo_alvara"
+        ],
+        "evidenceUrl": "https://alertalicitacao.com.br/!municipios/3534401",
+        "capturedAt": "2026-04-23T14:30:00Z",
+        "observations": "Ler edital para escopo técnico, exigências e cronograma de visita."
+      },
+      {
+        "source": "Monitor de Licitações",
+        "sourceAgency": "Secretaria de Serviços e Obras",
+        "cityKey": "osasco",
+        "probableCompany": "Fornecedor/empreiteira a contratar",
+        "address": "osasco/SP (a confirmar no edital)",
+        "lotLocation": "A confirmar",
+        "probableWorkType": "Serviços de drenagem urbana e recuperação de galerias",
+        "probablePhase": "fixture_fallback",
+        "approachKeywords": [
+          "licitação",
+          "obra pública",
+          "prospecção edital"
+        ],
+        "detectionReason": "Publicação de contratação/serviço de engenharia com potencial de obra.",
+        "documentId": "OSA-ENG-003",
+        "signals": [
+          "expansao_empresarial",
+          "novo_alvara"
+        ],
+        "evidenceUrl": "https://alertalicitacao.com.br/!municipios/3534401",
+        "capturedAt": "2026-04-23T14:30:00Z",
+        "observations": "Ler edital para escopo técnico, exigências e cronograma de visita."
+      },
+      {
+        "source": "Monitor de Licitações",
+        "sourceAgency": "Prefeitura de Osasco",
+        "cityKey": "osasco",
+        "probableCompany": "Fornecedor/empreiteira a contratar",
+        "address": "osasco/SP (a confirmar no edital)",
+        "lotLocation": "A confirmar",
+        "probableWorkType": "Requalificação de vias com recapeamento asfáltico",
+        "probablePhase": "fixture_fallback",
+        "approachKeywords": [
+          "licitação",
+          "obra pública",
+          "prospecção edital"
+        ],
+        "detectionReason": "Publicação de contratação/serviço de engenharia com potencial de obra.",
+        "documentId": "OSA-ENG-004",
+        "signals": [
+          "expansao_empresarial",
+          "novo_alvara"
+        ],
+        "evidenceUrl": "https://alertalicitacao.com.br/!municipios/3534401",
+        "capturedAt": "2026-04-23T14:30:00Z",
+        "observations": "Ler edital para escopo técnico, exigências e cronograma de visita."
+      },
+      {
+        "source": "Monitor de Licitações",
+        "sourceAgency": "Habitação",
+        "cityKey": "osasco",
+        "probableCompany": "Fornecedor/empreiteira a contratar",
+        "address": "osasco/SP (a confirmar no edital)",
+        "lotLocation": "A confirmar",
+        "probableWorkType": "Reforma de cobertura e pintura em complexo habitacional",
+        "probablePhase": "fixture_fallback",
+        "approachKeywords": [
+          "licitação",
+          "obra pública",
+          "prospecção edital"
+        ],
+        "detectionReason": "Publicação de contratação/serviço de engenharia com potencial de obra.",
+        "documentId": "OSA-ENG-005",
+        "signals": [
+          "expansao_empresarial",
+          "novo_alvara",
+          "uso_comercial"
+        ],
+        "evidenceUrl": "https://alertalicitacao.com.br/!municipios/3534401",
+        "capturedAt": "2026-04-23T14:30:00Z",
+        "observations": "Ler edital para escopo técnico, exigências e cronograma de visita."
+      }
+    ],
+    "requestUrl": "https://alertalicitacao.com.br/!municipios/3505708,https://alertalicitacao.com.br/!municipios/3534401",
+    "sourcesTried": [
+      {
+        "url": "https://alertalicitacao.com.br/!municipios/3505708",
+        "mode": "live",
+        "ok": false,
+        "error": "TypeError: fetch failed"
+      },
+      {
+        "url": "https://alertalicitacao.com.br/!municipios/3534401",
+        "mode": "live",
+        "ok": false,
+        "error": "TypeError: fetch failed"
+      }
+    ]
+  }
+]

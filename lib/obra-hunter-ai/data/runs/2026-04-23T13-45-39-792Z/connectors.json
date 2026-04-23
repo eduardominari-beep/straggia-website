@@ -1,0 +1,92 @@
+[
+  {
+    "connector": "geosampa",
+    "cityKey": "sao-paulo",
+    "startedAt": "2026-04-23T13:45:39.802Z",
+    "finishedAt": "2026-04-23T13:45:39.906Z",
+    "ok": false,
+    "signals": [],
+    "requestUrl": "https://wfs.geosampa.prefeitura.sp.gov.br/geoserver/ows?service=WFS&version=2.0.0&request=GetFeature&outputFormat=application%2Fjson&srsName=EPSG%3A4326&count=50&typeNames=geosampa%3Aacessos_livre",
+    "error": "TypeError: fetch failed"
+  },
+  {
+    "connector": "geosampa",
+    "cityKey": "sao-bernardo-do-campo",
+    "startedAt": "2026-04-23T13:45:39.906Z",
+    "finishedAt": "2026-04-23T13:45:39.929Z",
+    "ok": false,
+    "signals": [],
+    "requestUrl": "https://wfs.geosampa.prefeitura.sp.gov.br/geoserver/ows?service=WFS&version=2.0.0&request=GetFeature&outputFormat=application%2Fjson&srsName=EPSG%3A4326&count=50&typeNames=geosampa%3Aacessos_livre",
+    "error": "TypeError: fetch failed"
+  },
+  {
+    "connector": "geosampa",
+    "cityKey": "santo-andre",
+    "startedAt": "2026-04-23T13:45:39.929Z",
+    "finishedAt": "2026-04-23T13:45:39.951Z",
+    "ok": false,
+    "signals": [],
+    "requestUrl": "https://wfs.geosampa.prefeitura.sp.gov.br/geoserver/ows?service=WFS&version=2.0.0&request=GetFeature&outputFormat=application%2Fjson&srsName=EPSG%3A4326&count=50&typeNames=geosampa%3Aacessos_livre",
+    "error": "TypeError: fetch failed"
+  },
+  {
+    "connector": "geosampa",
+    "cityKey": "sao-caetano-do-sul",
+    "startedAt": "2026-04-23T13:45:39.952Z",
+    "finishedAt": "2026-04-23T13:45:40.120Z",
+    "ok": false,
+    "signals": [],
+    "requestUrl": "https://wfs.geosampa.prefeitura.sp.gov.br/geoserver/ows?service=WFS&version=2.0.0&request=GetFeature&outputFormat=application%2Fjson&srsName=EPSG%3A4326&count=50&typeNames=geosampa%3Aacessos_livre",
+    "error": "TypeError: fetch failed"
+  },
+  {
+    "connector": "geosampa",
+    "cityKey": "diadema",
+    "startedAt": "2026-04-23T13:45:40.120Z",
+    "finishedAt": "2026-04-23T13:45:40.282Z",
+    "ok": false,
+    "signals": [],
+    "requestUrl": "https://wfs.geosampa.prefeitura.sp.gov.br/geoserver/ows?service=WFS&version=2.0.0&request=GetFeature&outputFormat=application%2Fjson&srsName=EPSG%3A4326&count=50&typeNames=geosampa%3Aacessos_livre",
+    "error": "TypeError: fetch failed"
+  },
+  {
+    "connector": "geosampa",
+    "cityKey": "maua",
+    "startedAt": "2026-04-23T13:45:40.282Z",
+    "finishedAt": "2026-04-23T13:45:40.459Z",
+    "ok": false,
+    "signals": [],
+    "requestUrl": "https://wfs.geosampa.prefeitura.sp.gov.br/geoserver/ows?service=WFS&version=2.0.0&request=GetFeature&outputFormat=application%2Fjson&srsName=EPSG%3A4326&count=50&typeNames=geosampa%3Aacessos_livre",
+    "error": "TypeError: fetch failed"
+  },
+  {
+    "connector": "geosampa",
+    "cityKey": "guarulhos",
+    "startedAt": "2026-04-23T13:45:40.459Z",
+    "finishedAt": "2026-04-23T13:45:40.630Z",
+    "ok": false,
+    "signals": [],
+    "requestUrl": "https://wfs.geosampa.prefeitura.sp.gov.br/geoserver/ows?service=WFS&version=2.0.0&request=GetFeature&outputFormat=application%2Fjson&srsName=EPSG%3A4326&count=50&typeNames=geosampa%3Aacessos_livre",
+    "error": "TypeError: fetch failed"
+  },
+  {
+    "connector": "geosampa",
+    "cityKey": "osasco",
+    "startedAt": "2026-04-23T13:45:40.630Z",
+    "finishedAt": "2026-04-23T13:45:40.805Z",
+    "ok": false,
+    "signals": [],
+    "requestUrl": "https://wfs.geosampa.prefeitura.sp.gov.br/geoserver/ows?service=WFS&version=2.0.0&request=GetFeature&outputFormat=application%2Fjson&srsName=EPSG%3A4326&count=50&typeNames=geosampa%3Aacessos_livre",
+    "error": "TypeError: fetch failed"
+  },
+  {
+    "connector": "geosampa",
+    "cityKey": "barueri",
+    "startedAt": "2026-04-23T13:45:40.805Z",
+    "finishedAt": "2026-04-23T13:45:40.978Z",
+    "ok": false,
+    "signals": [],
+    "requestUrl": "https://wfs.geosampa.prefeitura.sp.gov.br/geoserver/ows?service=WFS&version=2.0.0&request=GetFeature&outputFormat=application%2Fjson&srsName=EPSG%3A4326&count=50&typeNames=geosampa%3Aacessos_livre",
+    "error": "TypeError: fetch failed"
+  }
+]
