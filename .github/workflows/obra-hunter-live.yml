@@ -49,6 +49,9 @@ jobs:
           node lib/obra-hunter-ai/cli.mjs weekly --cities="$CITIES" --min-score="$MIN_SCORE"
 
       - name: Compare live vs fallback
+        run: |
+          node lib/obra-hunter-ai/scripts/compare-live-vs-fallback.mjs --out=.tmp-compare.json
+          node lib/obra-hunter-ai/scripts/summarize-last-run.mjs
         run: node lib/obra-hunter-ai/scripts/compare-live-vs-fallback.mjs --out=.tmp-compare.json
         run: node lib/obra-hunter-ai/scripts/compare-live-vs-fallback.mjs
 
