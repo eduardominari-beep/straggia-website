@@ -83,6 +83,9 @@ const nextConfig = {
 
     { source: "/lp/valuation", destination: "/lp/valuation/index.html" },
     { source: "/lp/valuation/", destination: "/lp/valuation/index.html" },
+
+    { source: "/lp/performance", destination: "/lp/performance/index.html" },
+    { source: "/lp/performance/", destination: "/lp/performance/index.html" },
     ];
   },
 };
