@@ -1,0 +1,9 @@
+{
+  "eligibility": {
+    "totalNormalized": 15,
+    "minScore": 35,
+    "discardedByScore": 0,
+    "eligible": 15
+  },
+  "discarded": []
+}
