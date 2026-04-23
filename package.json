@@ -14,6 +14,7 @@
     "obra-hunter:compare": "node lib/obra-hunter-ai/scripts/compare-live-vs-fallback.mjs",
     "obra-hunter:summary": "node lib/obra-hunter-ai/scripts/summarize-last-run.mjs",
     "obra-hunter:status": "node lib/obra-hunter-ai/scripts/operational-status.mjs"
+    "obra-hunter:summary": "node lib/obra-hunter-ai/scripts/summarize-last-run.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
