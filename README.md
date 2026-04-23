@@ -202,3 +202,14 @@ Para dúvidas sobre implementação ou customização:
 
 Desenvolvido com ❤️ para a Straggia
 \`\`\`
+
+## OBRA HUNTER AI (MVP)
+
+Módulo backend entregue em `lib/obra-hunter-ai` com core engine, conector GeoSampa, score e geração de ranking semanal.
+
+Comandos:
+
+```bash
+npm run obra-hunter:test
+npm run obra-hunter:run
+```

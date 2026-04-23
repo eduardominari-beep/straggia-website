@@ -1,0 +1,59 @@
+name: obra-hunter-live
+
+on:
+  workflow_dispatch:
+    inputs:
+      cities:
+        description: "Cities list (comma-separated)"
+        required: false
+        default: "all-gsp"
+      min_score:
+        description: "Minimum score"
+        required: false
+        default: "35"
+  schedule:
+    - cron: "0 11 * * 1"
+
+jobs:
+  run-live:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install deps
+        run: npm ci
+
+      - name: Network diagnose
+        run: node lib/obra-hunter-ai/scripts/network-diagnose.mjs
+
+      - name: Run live pipeline (fallback disabled)
+        env:
+          OBRA_HUNTER_ENABLE_FIXTURE_FALLBACK: "0"
+          ALERT_EMAIL_ENABLED: ${{ secrets.ALERT_EMAIL_ENABLED }}
+          ALERT_TELEGRAM_ENABLED: ${{ secrets.ALERT_TELEGRAM_ENABLED }}
+        run: |
+          CITIES="${{ github.event.inputs.cities || 'all-gsp' }}"
+          MIN_SCORE="${{ github.event.inputs.min_score || '35' }}"
+          node lib/obra-hunter-ai/cli.mjs weekly --cities="$CITIES" --min-score="$MIN_SCORE"
+
+      - name: Compare live vs fallback
+        run: node lib/obra-hunter-ai/scripts/compare-live-vs-fallback.mjs
+
+      - name: Summarize latest run
+        run: node lib/obra-hunter-ai/scripts/summarize-last-run.mjs
+
+      - name: Upload run artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: obra-hunter-runs
+          path: lib/obra-hunter-ai/data/runs/

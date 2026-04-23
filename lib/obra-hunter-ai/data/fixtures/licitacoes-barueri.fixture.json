@@ -1,0 +1,12 @@
+{
+  "source": "Alerta Licitação - Barueri",
+  "sourceUrl": "https://alertalicitacao.com.br/!municipios/3505708",
+  "capturedAt": "2026-04-23T14:30:00Z",
+  "records": [
+    {"id":"SO-029-2026","titulo":"Contratação de Empresa para Reparos de Telhado, Pintura Externa e Manutenção nas Passarelas de Circulação no Conjunto Habitacional Vale dos Rios - Vale do Sol","orgao":"Secretaria de Suprimentos","cidade":"barueri"},
+    {"id":"SO-023-2026","titulo":"Serviços contínuos comuns de engenharia para operação, zeladoria e manutenção de reservatório de contenção de cheias","orgao":"Prefeitura de Barueri","cidade":"barueri"},
+    {"id":"PNCP-000006-2026","titulo":"Instalação de infraestrutura de rede lógica, monitoramento e elétrica na DISE","orgao":"Município de Barueri","cidade":"barueri"},
+    {"id":"REF-MATERNAL-2026","titulo":"Reforma geral da Maternal Maria de Menezes","orgao":"Município de Barueri","cidade":"barueri"},
+    {"id":"RECAPE-ZELIA","titulo":"Recapeamento e sinalização na Avenida Zélia","orgao":"Município de Barueri","cidade":"barueri"}
+  ]
+}
