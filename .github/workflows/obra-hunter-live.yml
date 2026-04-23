@@ -32,6 +32,9 @@ jobs:
       - name: Install deps
         run: npm ci
 
+      - name: Verify root lockfile
+        run: test -f package-lock.json
+
       - name: Network diagnose
         run: node lib/obra-hunter-ai/scripts/network-diagnose.mjs
 

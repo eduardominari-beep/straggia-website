@@ -10,6 +10,11 @@ Conclusão: o ambiente atual é restrito para coleta live de internet pública.
 
 ## Objetivo de produção
 
+### Estrutura adotada (sem ambiguidade)
+- `package.json` **na raiz** é o controlador oficial do projeto.
+- `package-lock.json` **na raiz** é obrigatório para `npm ci`.
+- Workflow executa tudo pela raiz e chama scripts que apontam para `lib/obra-hunter-ai`.
+
 Rodar coleta **100% live fora do sandbox** com:
 - fallback desligado por padrão
 - persistência de bruto da coleta

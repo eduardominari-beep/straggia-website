@@ -17,6 +17,8 @@
 
 ## Execução
 
+> Projeto usa `package.json` e `package-lock.json` na **raiz** para instalação e CI (`npm ci`).
+
 ```bash
 npm run obra-hunter:test
 OBRA_HUNTER_ENABLE_FIXTURE_FALLBACK=1 npm run obra-hunter:run
