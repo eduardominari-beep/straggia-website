@@ -47,3 +47,15 @@ Comandos úteis:
 npm run obra-hunter:net
 npm run obra-hunter:compare
 ```
+
+## Status operacional (workflow)
+
+- **SUCCESS (verde)**: pipeline executou, artefatos gerados, ranking existente e >=1 fonte útil respondeu.
+- **WARNING (interno)**: falha de conectores individuais / live abaixo fallback / queda de volume (registrado em `operational-status.json`, sem quebrar o job).
+- **FAIL (vermelho)**: crash total, ausência de artefatos, ranking inexistente ou nenhuma fonte útil.
+
+Comando local:
+
+```bash
+npm run obra-hunter:status
+```

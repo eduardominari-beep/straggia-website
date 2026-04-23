@@ -54,6 +54,15 @@ jobs:
       - name: Summarize latest run
         run: node lib/obra-hunter-ai/scripts/summarize-last-run.mjs
 
+      - name: Compute operational status
+        run: node lib/obra-hunter-ai/scripts/operational-status.mjs
+
+      - name: Append executive summary
+        if: always()
+        run: |
+          RUN_ID=$(ls -1 lib/obra-hunter-ai/data/runs | sort | tail -n 1)
+          cat "lib/obra-hunter-ai/data/runs/${RUN_ID}/operational-status.md" >> "$GITHUB_STEP_SUMMARY"
+
       - name: Upload run artifacts
         if: always()
         uses: actions/upload-artifact@v4
