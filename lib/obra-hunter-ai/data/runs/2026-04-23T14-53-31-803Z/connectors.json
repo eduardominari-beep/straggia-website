@@ -1,0 +1,129 @@
+[
+  {
+    "connector": "geosampa",
+    "cityKey": "sao-paulo",
+    "startedAt": "2026-04-23T14:53:31.814Z",
+    "finishedAt": "2026-04-23T14:53:31.926Z",
+    "ok": false,
+    "signals": [],
+    "requestUrl": "https://wfs.geosampa.prefeitura.sp.gov.br/geoserver/ows?service=WFS&version=2.0.0&request=GetFeature&outputFormat=application%2Fjson&srsName=EPSG%3A4326&count=50&typeNames=geosampa%3Aacessos_livre",
+    "error": "TypeError: fetch failed"
+  },
+  {
+    "connector": "geosampa",
+    "cityKey": "sao-bernardo-do-campo",
+    "startedAt": "2026-04-23T14:53:31.926Z",
+    "finishedAt": "2026-04-23T14:53:31.944Z",
+    "ok": false,
+    "signals": [],
+    "requestUrl": "https://wfs.geosampa.prefeitura.sp.gov.br/geoserver/ows?service=WFS&version=2.0.0&request=GetFeature&outputFormat=application%2Fjson&srsName=EPSG%3A4326&count=50&typeNames=geosampa%3Aacessos_livre",
+    "error": "TypeError: fetch failed"
+  },
+  {
+    "connector": "geosampa",
+    "cityKey": "santo-andre",
+    "startedAt": "2026-04-23T14:53:31.944Z",
+    "finishedAt": "2026-04-23T14:53:32.120Z",
+    "ok": false,
+    "signals": [],
+    "requestUrl": "https://wfs.geosampa.prefeitura.sp.gov.br/geoserver/ows?service=WFS&version=2.0.0&request=GetFeature&outputFormat=application%2Fjson&srsName=EPSG%3A4326&count=50&typeNames=geosampa%3Aacessos_livre",
+    "error": "TypeError: fetch failed"
+  },
+  {
+    "connector": "geosampa",
+    "cityKey": "sao-caetano-do-sul",
+    "startedAt": "2026-04-23T14:53:32.120Z",
+    "finishedAt": "2026-04-23T14:53:32.144Z",
+    "ok": false,
+    "signals": [],
+    "requestUrl": "https://wfs.geosampa.prefeitura.sp.gov.br/geoserver/ows?service=WFS&version=2.0.0&request=GetFeature&outputFormat=application%2Fjson&srsName=EPSG%3A4326&count=50&typeNames=geosampa%3Aacessos_livre",
+    "error": "TypeError: fetch failed"
+  },
+  {
+    "connector": "geosampa",
+    "cityKey": "diadema",
+    "startedAt": "2026-04-23T14:53:32.144Z",
+    "finishedAt": "2026-04-23T14:53:32.153Z",
+    "ok": false,
+    "signals": [],
+    "requestUrl": "https://wfs.geosampa.prefeitura.sp.gov.br/geoserver/ows?service=WFS&version=2.0.0&request=GetFeature&outputFormat=application%2Fjson&srsName=EPSG%3A4326&count=50&typeNames=geosampa%3Aacessos_livre",
+    "error": "TypeError: fetch failed"
+  },
+  {
+    "connector": "geosampa",
+    "cityKey": "maua",
+    "startedAt": "2026-04-23T14:53:32.153Z",
+    "finishedAt": "2026-04-23T14:53:32.179Z",
+    "ok": false,
+    "signals": [],
+    "requestUrl": "https://wfs.geosampa.prefeitura.sp.gov.br/geoserver/ows?service=WFS&version=2.0.0&request=GetFeature&outputFormat=application%2Fjson&srsName=EPSG%3A4326&count=50&typeNames=geosampa%3Aacessos_livre",
+    "error": "TypeError: fetch failed"
+  },
+  {
+    "connector": "geosampa",
+    "cityKey": "guarulhos",
+    "startedAt": "2026-04-23T14:53:32.179Z",
+    "finishedAt": "2026-04-23T14:53:32.197Z",
+    "ok": false,
+    "signals": [],
+    "requestUrl": "https://wfs.geosampa.prefeitura.sp.gov.br/geoserver/ows?service=WFS&version=2.0.0&request=GetFeature&outputFormat=application%2Fjson&srsName=EPSG%3A4326&count=50&typeNames=geosampa%3Aacessos_livre",
+    "error": "TypeError: fetch failed"
+  },
+  {
+    "connector": "geosampa",
+    "cityKey": "osasco",
+    "startedAt": "2026-04-23T14:53:32.197Z",
+    "finishedAt": "2026-04-23T14:53:32.231Z",
+    "ok": false,
+    "signals": [],
+    "requestUrl": "https://wfs.geosampa.prefeitura.sp.gov.br/geoserver/ows?service=WFS&version=2.0.0&request=GetFeature&outputFormat=application%2Fjson&srsName=EPSG%3A4326&count=50&typeNames=geosampa%3Aacessos_livre",
+    "error": "TypeError: fetch failed"
+  },
+  {
+    "connector": "geosampa",
+    "cityKey": "barueri",
+    "startedAt": "2026-04-23T14:53:32.231Z",
+    "finishedAt": "2026-04-23T14:53:32.259Z",
+    "ok": false,
+    "signals": [],
+    "requestUrl": "https://wfs.geosampa.prefeitura.sp.gov.br/geoserver/ows?service=WFS&version=2.0.0&request=GetFeature&outputFormat=application%2Fjson&srsName=EPSG%3A4326&count=50&typeNames=geosampa%3Aacessos_livre",
+    "error": "TypeError: fetch failed"
+  },
+  {
+    "connector": "barueri-pca",
+    "cityKey": "barueri",
+    "startedAt": "2026-04-23T14:53:32.259Z",
+    "finishedAt": "2026-04-23T14:53:34.639Z",
+    "ok": false,
+    "mode": "live-only",
+    "recordsCollected": 0,
+    "signals": [],
+    "requestUrl": "https://www.barueri.sp.gov.br/Transparencia/downloads/Planejamento/PCA_2026_-_Cronograma_de_Contrata%C3%A7%C3%B5es_OBRAS.pdf?ent=1&np=1",
+    "error": "TypeError: fetch failed"
+  },
+  {
+    "connector": "licitacoes-monitor",
+    "cityKey": "multi",
+    "startedAt": "2026-04-23T14:53:34.639Z",
+    "finishedAt": "2026-04-23T14:53:35.829Z",
+    "ok": false,
+    "mode": "live-only",
+    "recordsCollected": 0,
+    "signals": [],
+    "requestUrl": "https://alertalicitacao.com.br/!municipios/3505708,https://alertalicitacao.com.br/!municipios/3534401",
+    "sourcesTried": [
+      {
+        "url": "https://alertalicitacao.com.br/!municipios/3505708",
+        "mode": "live",
+        "ok": false,
+        "error": "TypeError: fetch failed"
+      },
+      {
+        "url": "https://alertalicitacao.com.br/!municipios/3534401",
+        "mode": "live",
+        "ok": false,
+        "error": "TypeError: fetch failed"
+      }
+    ]
+  }
+]

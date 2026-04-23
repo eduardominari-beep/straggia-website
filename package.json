@@ -6,7 +6,14 @@
     "build": "next build",
     "dev": "next dev",
     "lint": "next lint",
-    "start": "next start"
+    "start": "next start",
+    "obra-hunter:run": "node lib/obra-hunter-ai/cli.mjs run --cities=all-gsp",
+    "obra-hunter:weekly": "node lib/obra-hunter-ai/cli.mjs weekly --cities=all-gsp",
+    "obra-hunter:test": "node --test lib/obra-hunter-ai/tests/*.test.mjs",
+    "obra-hunter:net": "node lib/obra-hunter-ai/scripts/network-diagnose.mjs",
+    "obra-hunter:compare": "node lib/obra-hunter-ai/scripts/compare-live-vs-fallback.mjs",
+    "obra-hunter:summary": "node lib/obra-hunter-ai/scripts/summarize-last-run.mjs",
+    "obra-hunter:status": "node lib/obra-hunter-ai/scripts/operational-status.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",

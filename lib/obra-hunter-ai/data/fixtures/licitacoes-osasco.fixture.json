@@ -1,0 +1,12 @@
+{
+  "source": "Monitor de Licitações - Osasco",
+  "sourceUrl": "https://alertalicitacao.com.br/!municipios/3534401",
+  "capturedAt": "2026-04-23T14:30:00Z",
+  "records": [
+    {"id":"OSA-ENG-001","titulo":"Contratação de empresa para reforma e adequação de unidades escolares municipais","orgao":"Prefeitura de Osasco","cidade":"osasco"},
+    {"id":"OSA-ENG-002","titulo":"Manutenção predial corretiva em equipamentos públicos","orgao":"Secretaria de Obras","cidade":"osasco"},
+    {"id":"OSA-ENG-003","titulo":"Serviços de drenagem urbana e recuperação de galerias","orgao":"Secretaria de Serviços e Obras","cidade":"osasco"},
+    {"id":"OSA-ENG-004","titulo":"Requalificação de vias com recapeamento asfáltico","orgao":"Prefeitura de Osasco","cidade":"osasco"},
+    {"id":"OSA-ENG-005","titulo":"Reforma de cobertura e pintura em complexo habitacional","orgao":"Habitação","cidade":"osasco"}
+  ]
+}
