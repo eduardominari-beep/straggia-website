@@ -37,7 +37,7 @@ jobs:
         run: node lib/obra-hunter-ai/scripts/compare-live-vs-fallback.mjs --out=.tmp-compare.json
 
       - name: Summarize latest run
-        run: node lib/obra-hunter-ai/scripts/summarize-last-run.mjs
+        run: node lib/obra-hunter-ai/scripts/summarize-last-run.mjs --run-id=${{ steps.vars.outputs.run_id }}
 
       - name: Compute operational status
         run: |
