@@ -52,6 +52,11 @@ jobs:
         run: |
           node lib/obra-hunter-ai/scripts/compare-live-vs-fallback.mjs --out=.tmp-compare.json
           node lib/obra-hunter-ai/scripts/summarize-last-run.mjs
+        run: node lib/obra-hunter-ai/scripts/compare-live-vs-fallback.mjs --out=.tmp-compare.json
+        run: node lib/obra-hunter-ai/scripts/compare-live-vs-fallback.mjs
+
+      - name: Summarize latest run
+        run: node lib/obra-hunter-ai/scripts/summarize-last-run.mjs
 
       - name: Compute operational status
         run: |
@@ -59,6 +64,7 @@ jobs:
           FALLBACK_RUN_ID=$(node -e "const fs=require('fs');const r=JSON.parse(fs.readFileSync('.tmp-compare.json','utf8'));process.stdout.write(r.fallback.runId)")
           node lib/obra-hunter-ai/scripts/operational-status.mjs --run-id="$FALLBACK_RUN_ID" --previous-run-id="$LIVE_RUN_ID"
           echo "RUN_ID=$FALLBACK_RUN_ID" >> "$GITHUB_ENV"
+        run: node lib/obra-hunter-ai/scripts/operational-status.mjs
 
       - name: Append executive summary
         if: always()
@@ -69,6 +75,8 @@ jobs:
             echo "# Operational Status: FAIL" >> "$GITHUB_STEP_SUMMARY"
             echo "- motivo: operational-status.md não encontrado" >> "$GITHUB_STEP_SUMMARY"
           fi
+          RUN_ID=$(ls -1 lib/obra-hunter-ai/data/runs | sort | tail -n 1)
+          cat "lib/obra-hunter-ai/data/runs/${RUN_ID}/operational-status.md" >> "$GITHUB_STEP_SUMMARY"
 
       - name: Upload run artifacts
         if: always()
