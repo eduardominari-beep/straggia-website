@@ -20,3 +20,11 @@ yarn.lock
 # SO / editor
 .DS_Store
 *.log
+
+# OBRA HUNTER runtime artifacts
+lib/obra-hunter-ai/data/runs/
+lib/obra-hunter-ai/data/raw/live/
+.tmp-compare.json
+.tmp-live-run.json
+.tmp-fallback-run.json
+.tmp-executive-summary.md
