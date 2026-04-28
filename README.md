@@ -213,3 +213,48 @@ Comandos:
 npm run obra-hunter:test
 npm run obra-hunter:run
 ```
+
+## OBRA HUNTER AI (Python MVP)
+
+Executar localmente:
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+python run.py --cities all --min-score 35
+```
+
+Testes:
+
+```bash
+pytest
+```
+
+Saídas da execução ficam em `data/runs/<run_id>/` com:
+
+- `ranking-semanal.csv`
+- `ranking-semanal.json`
+- `ranking-semanal.md`
+- `diagnostics.json`
+
+### Bot semanal (replicável)
+
+O bot agora roda com filtro preditivo para priorizar somente leads com:
+
+- chance de fornecedor **ainda não escolhido** (`chance_supplier_not_chosen = SIM`)
+- score mínimo configurável
+- contato real ou caminho de entrada (por padrão obrigatório)
+- limite semanal de oportunidades (`--max-leads`, padrão 10)
+
+Execução semanal local:
+
+```bash
+python run.py --cities all --min-score 35 --max-leads 10
+```
+
+Se quiser rodar modo exploratório sem bloquear leads sem contato/caminho:
+
+```bash
+python run.py --cities all --min-score 35 --max-leads 10 --allow-no-contact-path
+```

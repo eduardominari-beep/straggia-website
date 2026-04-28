@@ -2,96 +2,33 @@ name: obra-hunter-live
 
 on:
   workflow_dispatch:
-    inputs:
-      cities:
-        description: "Cities list (comma-separated)"
-        required: false
-        default: "all-gsp"
-      min_score:
-        description: "Minimum score"
-        required: false
-        default: "35"
   schedule:
-    - cron: "0 11 * * 1"
+    - cron: "0 10 * * 1"
 
 jobs:
-  run-live:
+  run-pipeline:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - name: Setup Python
+        uses: actions/setup-python@v5
         with:
-          node-version: "20"
-          cache: "npm"
+          python-version: "3.12"
 
-      - name: Install deps
-        run: npm ci
-
-      - name: Prepare workflow run_id
-        run: echo "WORKFLOW_RUN_ID=$(date -u +%Y-%m-%dT%H-%M-%SZ)" >> "$GITHUB_ENV"
-
-      - name: Run live pipeline (real collection)
-        env:
-          OBRA_HUNTER_ENABLE_FIXTURE_FALLBACK: "0"
-          ALERT_EMAIL_ENABLED: ${{ secrets.ALERT_EMAIL_ENABLED }}
-          ALERT_TELEGRAM_ENABLED: ${{ secrets.ALERT_TELEGRAM_ENABLED }}
+      - name: Install dependencies
         run: |
-          CITIES="${{ github.event.inputs.cities || 'all-gsp' }}"
-          MIN_SCORE="${{ github.event.inputs.min_score || '35' }}"
-          node lib/obra-hunter-ai/scripts/run-pipeline.mjs --mode=live --cities="$CITIES" --min-score="$MIN_SCORE" --result-file=.tmp-live-run.json
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
 
-      - name: Run fallback pipeline (comparison baseline)
-        env:
-          OBRA_HUNTER_ENABLE_FIXTURE_FALLBACK: "1"
-        run: |
-          CITIES="${{ github.event.inputs.cities || 'all-gsp' }}"
-          MIN_SCORE="${{ github.event.inputs.min_score || '35' }}"
-          node lib/obra-hunter-ai/scripts/run-pipeline.mjs --mode=fallback --cities="$CITIES" --min-score="$MIN_SCORE" --result-file=.tmp-fallback-run.json
+      - name: Run OBRA HUNTER AI MVP
+        run: python run.py --cities all --min-score 35 --max-leads 10
 
-      - name: Compare live vs fallback (explicit run_id)
-        run: |
-          LIVE_RUN_ID=$(node -e "const fs=require('fs');const v=JSON.parse(fs.readFileSync('.tmp-live-run.json','utf8'));process.stdout.write(v.runId)")
-          FALLBACK_RUN_ID=$(node -e "const fs=require('fs');const v=JSON.parse(fs.readFileSync('.tmp-fallback-run.json','utf8'));process.stdout.write(v.runId)")
-          node lib/obra-hunter-ai/scripts/compare-live-vs-fallback.mjs --live-run-id="$LIVE_RUN_ID" --fallback-run-id="$FALLBACK_RUN_ID" --out=.tmp-compare.json
-          echo "LIVE_RUN_ID=$LIVE_RUN_ID" >> "$GITHUB_ENV"
-          echo "FALLBACK_RUN_ID=$FALLBACK_RUN_ID" >> "$GITHUB_ENV"
-
-      - name: Generate executive summary
-        run: node lib/obra-hunter-ai/scripts/summarize-last-run.mjs --run-id="$LIVE_RUN_ID" --compare-path=.tmp-compare.json --out=.tmp-executive-summary.md
-
-      - name: Compute operational status (factual)
-        run: node lib/obra-hunter-ai/scripts/operational-status.mjs --run-id="$LIVE_RUN_ID" --fallback-run-id="$FALLBACK_RUN_ID"
-
-      - name: Append executive summary to GitHub Summary
-        if: always()
-        run: |
-          if [ -f .tmp-executive-summary.md ]; then
-            cat .tmp-executive-summary.md >> "$GITHUB_STEP_SUMMARY"
-          else
-            echo "# Executive Summary: FAIL" >> "$GITHUB_STEP_SUMMARY"
-            echo "- motivo: .tmp-executive-summary.md não encontrado" >> "$GITHUB_STEP_SUMMARY"
-          fi
-
-          if [ -n "$LIVE_RUN_ID" ] && [ -f "lib/obra-hunter-ai/data/runs/${LIVE_RUN_ID}/operational-status.md" ]; then
-            cat "lib/obra-hunter-ai/data/runs/${LIVE_RUN_ID}/operational-status.md" >> "$GITHUB_STEP_SUMMARY"
-          else
-            echo "# Operational Status: FAIL" >> "$GITHUB_STEP_SUMMARY"
-            echo "- motivo: operational-status.md não encontrado para LIVE_RUN_ID" >> "$GITHUB_STEP_SUMMARY"
-          fi
-
-      - name: Upload run artifacts
+      - name: Upload runs
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: obra-hunter-runs-${{ env.WORKFLOW_RUN_ID }}
-          path: |
-            lib/obra-hunter-ai/data/runs/
-            .tmp-live-run.json
-            .tmp-fallback-run.json
-            .tmp-compare.json
-            .tmp-executive-summary.md
+          name: obra-hunter-runs
+          path: data/runs/**
