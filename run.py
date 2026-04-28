@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import traceback
 
 from core.pipeline import run_pipeline
 
@@ -25,6 +26,26 @@ def main() -> int:
     )
     args = parser.parse_args()
 
+    try:
+        result = run_pipeline(
+            cities=_parse_cities(args.cities),
+            min_score=args.min_score,
+            max_leads=args.max_leads,
+            require_contact_path=not args.allow_no_contact_path,
+        )
+    except Exception as exc:  # noqa: BLE001
+        print(
+            json.dumps(
+                {
+                    "status": "ERROR",
+                    "error": str(exc),
+                    "traceback": traceback.format_exc(),
+                },
+                ensure_ascii=False,
+                indent=2,
+            )
+        )
+        return 1
     result = run_pipeline(
         cities=_parse_cities(args.cities),
         min_score=args.min_score,
@@ -36,6 +57,11 @@ def main() -> int:
     print(f"status: {result['status']}")
     print(f"total leads salvos: {result['total_saved']}")
     print(f"output: {result['output_dir']}")
+    print(f"debug: {result['debug_dir']}")
+
+    # Retorna 0 para execução operacional (inclusive sem leads).
+    # Retorna 1 apenas em erro estrutural real (exception no bloco acima).
+    return 0
 
     return 0 if result["status"] in {"SUCCESS", "WARNING"} else 1
 

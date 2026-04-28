@@ -2,6 +2,12 @@ from __future__ import annotations
 
 import re
 from typing import Any
+from urllib.error import HTTPError, URLError
+from urllib.request import urlopen
+from xml.etree import ElementTree
+
+from core.errors import SourceFetchError
+
 from urllib.request import urlopen
 from xml.etree import ElementTree
 
@@ -30,6 +36,22 @@ def collect_leads(cities: list[str] | None = None, timeout: int = 20) -> list[di
     }
 
     leads: list[dict[str, Any]] = []
+    city_errors: list[dict[str, Any]] = []
+
+    for city, url in targets.items():
+        try:
+            with urlopen(url, timeout=timeout) as response:
+                xml_bytes = response.read()
+        except HTTPError as exc:
+            body = exc.read().decode("utf-8", errors="ignore")[:800]
+            city_errors.append({"city": city, "url": url, "status_code": exc.code, "error": "HTTP error", "response_excerpt": body})
+            continue
+        except URLError as exc:
+            city_errors.append({"city": city, "url": url, "status_code": None, "error": f"Network error: {exc.reason}", "response_excerpt": None})
+            continue
+        except Exception as exc:  # noqa: BLE001
+            city_errors.append({"city": city, "url": url, "status_code": None, "error": f"Unexpected error: {exc}", "response_excerpt": None})
+            continue
     for city, url in targets.items():
         with urlopen(url, timeout=timeout) as response:
             xml_bytes = response.read()
@@ -66,5 +88,12 @@ def collect_leads(cities: list[str] | None = None, timeout: int = 20) -> list[di
                     "entry_path": "Acessar órgão/publicação e identificar empresa responsável para abordagem",
                 }
             )
+
+    if city_errors and not leads:
+        raise SourceFetchError(
+            source="diarios_abc",
+            message="All target RSS sources failed",
+            metadata={"city_errors": city_errors},
+        )
 
     return leads

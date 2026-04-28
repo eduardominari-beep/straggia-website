@@ -2,6 +2,12 @@ from __future__ import annotations
 
 import json
 from typing import Any
+from urllib.error import HTTPError, URLError
+from urllib.parse import urlencode
+from urllib.request import urlopen
+
+from core.errors import SourceFetchError
+
 from urllib.parse import urlencode
 from urllib.request import urlopen
 
@@ -14,6 +20,36 @@ def collect_leads(cities: list[str] | None = None, timeout: int = 20) -> list[di
         return []
 
     query = urlencode({"q": "alvará licenciamento obra comercial industrial", "rows": 25})
+    request_url = f"{GEOSAMPA_DATASET_URL}?{query}"
+
+    try:
+        with urlopen(request_url, timeout=timeout) as response:
+            payload = json.loads(response.read().decode("utf-8"))
+    except HTTPError as exc:
+        body = exc.read().decode("utf-8", errors="ignore")[:800]
+        raise SourceFetchError(
+            source="geosampa",
+            message="HTTP error during source fetch",
+            url=request_url,
+            status_code=exc.code,
+            response_excerpt=body,
+        ) from exc
+    except URLError as exc:
+        raise SourceFetchError(
+            source="geosampa",
+            message=f"Network error during source fetch: {exc.reason}",
+            url=request_url,
+        ) from exc
+    except Exception as exc:  # noqa: BLE001
+        raise SourceFetchError(
+            source="geosampa",
+            message=f"Unexpected error during source fetch: {exc}",
+            url=request_url,
+        ) from exc
+
+    results = payload.get("result", {}).get("results", [])
+    leads: list[dict[str, Any]] = []
+
     with urlopen(f"{GEOSAMPA_DATASET_URL}?{query}", timeout=timeout) as response:
         payload = json.loads(response.read().decode("utf-8"))
 

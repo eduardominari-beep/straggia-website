@@ -258,3 +258,22 @@ Se quiser rodar modo exploratório sem bloquear leads sem contato/caminho:
 ```bash
 python run.py --cities all --min-score 35 --max-leads 10 --allow-no-contact-path
 ```
+
+### Observabilidade e debug por fonte
+
+A cada execução, o bot salva artefatos de debug em:
+
+- `data/runs/<run_id>/debug/`
+
+Arquivos gerados por fonte incluem:
+
+- exception class e mensagem
+- URL chamada
+- status code (quando existir)
+- traceback completo
+- trecho de resposta HTTP (quando disponível)
+
+Comportamento de exit code:
+
+- `0` para execução operacional (mesmo sem leads)
+- `1` apenas para erro estrutural real (exceção fatal fora da resiliência por fonte)
