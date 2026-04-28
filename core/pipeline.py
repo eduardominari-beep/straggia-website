@@ -8,6 +8,10 @@ from typing import Callable
 
 from connectors import diarios_abc, geosampa, web_news
 from core.errors import SourceFetchError
+from datetime import datetime, timezone
+from typing import Callable
+
+from connectors import diarios_abc, geosampa
 from core.report import generate_reports
 from core.scoring import score_lead
 from core.storage import init_db, save_leads
@@ -78,6 +82,10 @@ def run_pipeline(
     sources_fail: list[str] = []
     raw_leads: list[dict] = []
     errors: dict[str, dict] = {}
+    sources_ok: list[str] = []
+    sources_fail: list[str] = []
+    raw_leads: list[dict] = []
+    errors: dict[str, str] = {}
 
     for source_name, connector in CONNECTORS:
         try:
@@ -120,6 +128,9 @@ def run_pipeline(
 
             errors[source_name] = error_payload
             _write_debug_file(debug_dir, source_name, error_payload)
+        except Exception as exc:  # noqa: BLE001 - pipeline resilience by source
+            sources_fail.append(source_name)
+            errors[source_name] = str(exc)
 
     unique_raw = _dedupe_leads(raw_leads)
     scored = [score_lead(lead) for lead in unique_raw]

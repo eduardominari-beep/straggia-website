@@ -46,6 +46,12 @@ def main() -> int:
             )
         )
         return 1
+    result = run_pipeline(
+        cities=_parse_cities(args.cities),
+        min_score=args.min_score,
+        max_leads=args.max_leads,
+        require_contact_path=not args.allow_no_contact_path,
+    )
 
     print(json.dumps(result, ensure_ascii=False, indent=2))
     print(f"status: {result['status']}")
@@ -56,6 +62,8 @@ def main() -> int:
     # Retorna 0 para execução operacional (inclusive sem leads).
     # Retorna 1 apenas em erro estrutural real (exception no bloco acima).
     return 0
+
+    return 0 if result["status"] in {"SUCCESS", "WARNING"} else 1
 
 
 if __name__ == "__main__":

@@ -3,6 +3,9 @@ from pathlib import Path
 
 from core import pipeline
 from core.errors import SourceFetchError
+from pathlib import Path
+
+from core import pipeline
 
 
 def test_pipeline_resilient_and_success(monkeypatch) -> None:

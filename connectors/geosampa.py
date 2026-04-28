@@ -8,6 +8,9 @@ from urllib.request import urlopen
 
 from core.errors import SourceFetchError
 
+from urllib.parse import urlencode
+from urllib.request import urlopen
+
 GEOSAMPA_DATASET_URL = "https://dadosabertos.prefeitura.sp.gov.br/api/3/action/package_search"
 
 
@@ -47,6 +50,12 @@ def collect_leads(cities: list[str] | None = None, timeout: int = 20) -> list[di
     results = payload.get("result", {}).get("results", [])
     leads: list[dict[str, Any]] = []
 
+    with urlopen(f"{GEOSAMPA_DATASET_URL}?{query}", timeout=timeout) as response:
+        payload = json.loads(response.read().decode("utf-8"))
+
+    results = payload.get("result", {}).get("results", [])
+
+    leads: list[dict[str, Any]] = []
     for item in results:
         text = " ".join(
             [

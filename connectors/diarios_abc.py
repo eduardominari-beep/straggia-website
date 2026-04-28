@@ -8,6 +8,9 @@ from xml.etree import ElementTree
 
 from core.errors import SourceFetchError
 
+from urllib.request import urlopen
+from xml.etree import ElementTree
+
 ABC_RSS_SOURCES: dict[str, str] = {
     "Santo André": "https://www2.santoandre.sp.gov.br/index.php/feed/",
     "São Bernardo do Campo": "https://www.saobernardo.sp.gov.br/web/sbc/feed",
@@ -49,6 +52,9 @@ def collect_leads(cities: list[str] | None = None, timeout: int = 20) -> list[di
         except Exception as exc:  # noqa: BLE001
             city_errors.append({"city": city, "url": url, "status_code": None, "error": f"Unexpected error: {exc}", "response_excerpt": None})
             continue
+    for city, url in targets.items():
+        with urlopen(url, timeout=timeout) as response:
+            xml_bytes = response.read()
 
         root = ElementTree.fromstring(xml_bytes)
         for item in root.findall(".//item")[:20]:
