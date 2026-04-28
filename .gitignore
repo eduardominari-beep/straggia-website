@@ -28,3 +28,10 @@ lib/obra-hunter-ai/data/raw/live/
 .tmp-live-run.json
 .tmp-fallback-run.json
 .tmp-executive-summary.md
+
+# OBRA HUNTER Python runtime artifacts
+data/runs/
+data/*.db
+
+__pycache__/
+*.pyc
