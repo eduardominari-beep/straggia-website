@@ -21,8 +21,8 @@ export default function HomePage() {
       <ContentSection recentPosts={recentPosts} />
 
       <section id="performance" className="relative overflow-hidden bg-secondary py-16 text-secondary-foreground md:py-20">
-        <div className="absolute inset-0 straggia-texture opacity-20" />
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="pointer-events-none absolute inset-0 straggia-texture opacity-20" />
+        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-primary">
             Diagnóstico de gestão e crescimento
           </p>
@@ -32,16 +32,9 @@ export default function HomePage() {
           <p className="mx-auto mb-7 max-w-2xl text-secondary-foreground/78">
             Fale conosco para entender como a Straggia organiza metas, rituais, indicadores e liderança em um sistema prático de execução.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex justify-center">
             <Button asChild className="px-8 py-3 bg-primary text-primary-foreground shadow-lg shadow-black/15 hover:bg-primary/90">
               <Link href="/lp/performance">Fale conosco</Link>
-            </Button>
-            <Button
-              asChild
-              variant="outline"
-              className="px-8 py-3 border-secondary-foreground/30 bg-transparent text-secondary-foreground hover:bg-secondary-foreground hover:text-secondary"
-            >
-              <Link href="/quem-somos">Conhecer a Straggia</Link>
             </Button>
           </div>
         </div>
