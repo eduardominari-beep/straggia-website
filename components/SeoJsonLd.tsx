@@ -12,7 +12,7 @@ type Props = {
 export default function SeoJsonLd({
   siteUrl,
   brandName = "Straggia Consultoria",
-  logoUrl = `${siteUrl}/brand/logo-horizontal.jpg`,
+  logoUrl = `${siteUrl}/brand/logo-horizontal-transparent.png`,
   sameAs = [],
 }: Props) {
   const org = {

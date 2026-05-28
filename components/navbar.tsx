@@ -94,7 +94,7 @@ export function Navbar() {
           <div className="flex items-center justify-between py-4 md:py-5">
             <Link href="/#inicio" className="shrink-0" aria-label="Ir para o início">
               <Image
-                src="/brand/logo-horizontal.jpg"
+                src="/brand/logo-horizontal-transparent.png"
                 alt="Straggia"
                 width={1200}
                 height={300}

@@ -14,7 +14,7 @@ export function Footer() {
           {/* Logo + descrição */}
           <div className="space-y-4">
             <Image
-              src="/brand/logo-vertical.jpg"
+              src="/brand/logo-vertical-transparent.png"
               alt="Straggia"
               width={320}
               height={320}
