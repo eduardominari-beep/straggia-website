@@ -30,7 +30,7 @@ export default function HomePage() {
             Transforme intenção estratégica em performance mensurável.
           </h2>
           <p className="mx-auto mb-7 max-w-2xl text-secondary-foreground/78">
-            Acesse a LP Performance para entender como a Straggia organiza metas, rituais, indicadores e liderança em um sistema prático de execução.
+            Fale conosco para entender como a Straggia organiza metas, rituais, indicadores e liderança em um sistema prático de execução.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button asChild className="px-8 py-3 bg-primary text-primary-foreground shadow-lg shadow-black/15 hover:bg-primary/90">
