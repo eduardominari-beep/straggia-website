@@ -12,7 +12,6 @@ const navigation = [
   { name: "Soluções", href: "#solucoes" },
   { name: "Método", href: "#metodo" },
   { name: "Conteúdo", href: "#conteudo" },
-  { name: "Performance", href: "/lp/performance" },
   { name: "Quem somos", href: "/quem-somos" },
 ]
 
