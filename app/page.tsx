@@ -20,31 +20,28 @@ export default function HomePage() {
       <MethodSection />
       <ContentSection recentPosts={recentPosts} />
 
-      {/* nova seção de contato para bater com o #contato do Navbar */}
-      <section id="contato" className="bg-card border-t border-border py-16 md:py-20">
+      <section id="performance" className="relative overflow-hidden bg-secondary py-16 text-secondary-foreground md:py-20">
+        <div className="absolute inset-0 straggia-texture opacity-20" />
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">
-            Vamos conversar?
+          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-primary">
+            Diagnóstico de gestão e crescimento
+          </p>
+          <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 text-balance">
+            Transforme intenção estratégica em performance mensurável.
           </h2>
-          <p className="text-muted-foreground mb-6">
-            Agende uma conversa de 45 minutos ou fale direto comigo no WhatsApp.
+          <p className="mx-auto mb-7 max-w-2xl text-secondary-foreground/78">
+            Acesse a LP Performance para entender como a Straggia organiza metas, rituais, indicadores e liderança em um sistema prático de execução.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild className="px-8 py-3">
-              <Link href="/agenda">Agendar conversa</Link>
+            <Button asChild className="px-8 py-3 bg-primary text-primary-foreground shadow-lg shadow-black/15 hover:bg-primary/90">
+              <Link href="/lp/performance">Fale conosco</Link>
             </Button>
             <Button
               asChild
               variant="outline"
-              className="px-8 py-3 border-secondary text-secondary hover:bg-secondary hover:text-secondary-foreground"
+              className="px-8 py-3 border-secondary-foreground/30 bg-transparent text-secondary-foreground hover:bg-secondary-foreground hover:text-secondary"
             >
-              <Link
-                href="https://wa.me/5516996317472"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Falar no WhatsApp
-              </Link>
+              <Link href="/quem-somos">Conhecer a Straggia</Link>
             </Button>
           </div>
         </div>

@@ -13,11 +13,11 @@
 */
 :root {
   /* Base do site */
-  --background: #ffffff;               /* Fundo global (body, seções, navbar) */
+  --background: #fbfaf8;               /* Fundo global (body, seções, navbar) */
   --foreground: #292929;               /* Texto padrão (graphite) */
 
   /* Superfícies */
-  --card: #ffffff;                     /* Fundo de cards/caixas */
+  --card: #fffdfb;                     /* Fundo de cards/caixas */
   --card-foreground: #292929;          /* Texto dentro de cards */
   --popover: #ffffff;                  /* Fundo de popovers/menus */
   --popover-foreground: #292929;       /* Texto dentro de popovers/menus */
@@ -31,7 +31,7 @@
   --secondary-foreground: #ffffff;     /* Texto/ícone sobre secondary */
 
   /* Neutros de interface */
-  --muted: #E8E5E3;                    /* FOG — superfícies suaves (faixas separadoras) */
+  --muted: #EEEAE6;                    /* FOG — superfícies suaves (faixas separadoras) */
   --muted-foreground: #5D5D5D;         /* SLATE — texto sobre superfícies muted */
 
   --accent: #5D5D5D;                   /* SLATE — detalhes/links discretos/ícones */
@@ -42,8 +42,8 @@
   --destructive-foreground: #ffffff;
 
   /* Linhas / inputs / focus */
-  --border: #E8E5E3;                   /* FOG — bordas de inputs/cards/seções */
-  --input:  #E8E5E3;                   /* Bordas de inputs (ou fundo, conforme componente) */
+  --border: #DED9D4;                   /* FOG — bordas de inputs/cards/seções */
+  --input:  #DED9D4;                   /* Bordas de inputs (ou fundo, conforme componente) */
   --ring:   #D07E3E;                   /* Focus ring em cobre */
 
   /* Paleta para gráficos (ordem pensada p/ contraste) */
@@ -123,13 +123,21 @@
 /* Base */
 @layer base {
   * { @apply border-border outline-ring/50; }
-  body { @apply bg-background text-foreground font-sans; }
+  body { @apply bg-background text-foreground font-sans antialiased; }
   h1,h2,h3,h4,h5,h6 { @apply font-display; }
 }
 
 /* Botão primário (CTA em cobre) */
 .btn-primary { background-color: var(--primary); color: var(--primary-foreground); }
 .btn-primary:hover { background-color: var(--primary-hover); }
+
+.straggia-texture {
+  background-image:
+    linear-gradient(rgba(41, 41, 41, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(41, 41, 41, 0.045) 1px, transparent 1px),
+    linear-gradient(135deg, rgba(208, 126, 62, 0.08), transparent 42%);
+  background-size: 44px 44px, 44px 44px, 100% 100%;
+}
 
 /* Prism (blocos de código) */
 .prism-code { @apply bg-card text-card-foreground p-4 rounded-lg overflow-x-auto; }

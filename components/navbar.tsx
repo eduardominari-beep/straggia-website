@@ -12,7 +12,7 @@ const navigation = [
   { name: "Soluções", href: "#solucoes" },
   { name: "Método", href: "#metodo" },
   { name: "Conteúdo", href: "#conteudo" },
-  { name: "Contato", href: "#contato" },
+  { name: "Performance", href: "/lp/performance" },
   { name: "Quem somos", href: "/quem-somos" },
 ]
 
@@ -86,12 +86,12 @@ export function Navbar() {
       <nav
         id="site-header"
         className={`fixed top-0 z-50 w-full transition-all duration-300 ${
-          isScrolled ? "bg-background/95 backdrop-blur-sm border-b border-border" : "bg-transparent"
+          isScrolled ? "bg-background/88 backdrop-blur-md border-b border-border shadow-sm" : "bg-transparent"
         }`}
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           {/* Sem altura fixa: apenas padding vertical p/ a logo grande */}
-          <div className="flex items-center justify-between pt-6 md:pt-7 lg:pt-8 pb-7 md:pb-8 lg:pb-9">
+          <div className="flex items-center justify-between py-4 md:py-5">
             <Link href="/#inicio" className="shrink-0" aria-label="Ir para o início">
               <Image
                 src="/brand/logo-horizontal.jpg"
@@ -99,7 +99,7 @@ export function Navbar() {
                 width={1200}
                 height={300}
                 priority
-                className="h-28 w-auto"
+                className="h-16 w-auto md:h-20"
               />
             </Link>
 
@@ -125,12 +125,10 @@ export function Navbar() {
                 ),
               )}
 
-              {/* CTA primário: Agendar conversa (substitui Pré-Diagnóstico) */}
-              {/* YouTube */}
               <YoutubeLink />
-              <Button asChild className="ml-2 bg-primary text-primary-foreground hover:bg-primary/90">
-                 <Link href="/agenda">Agendar conversa</Link>
-               </Button>
+              <Button asChild className="ml-2 bg-primary text-primary-foreground shadow-sm hover:bg-primary/90">
+                <Link href="/lp/performance">Fale conosco</Link>
+              </Button>
             </div>
           </div>
         </div>

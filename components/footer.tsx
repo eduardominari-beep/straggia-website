@@ -49,25 +49,21 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Contato */}
           <div>
-            <h3 className="text-lg font-display font-semibold mb-4 text-primary">Contato</h3>
+            <h3 className="text-lg font-display font-semibold mb-4 text-primary">Performance</h3>
             <div className="space-y-3">
+              <Link
+                href="/lp/performance"
+                className="block text-muted-foreground hover:text-primary transition-colors"
+              >
+                Fale conosco
+              </Link>
               <a
                 href="mailto:contato@straggia.com"
                 className="block text-muted-foreground hover:text-primary transition-colors"
                 aria-label="Enviar email para contato@straggia.com"
               >
                 contato@straggia.com
-              </a>
-              <a
-                href="https://wa.me/5516996317472"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block text-muted-foreground hover:text-secondary transition-colors"
-                aria-label="Entrar em contato via WhatsApp"
-              >
-                WhatsApp: (16) 99631-7472
               </a>
               <div>
                 <YoutubeLink />

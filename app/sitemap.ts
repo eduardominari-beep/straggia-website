@@ -13,7 +13,7 @@ const staticRoutes = [
   { url: `${base}/`, lastModified: now, changeFrequency: "weekly", priority: 1 },
   { url: `${base}/quem-somos`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
   { url: `${base}/blog`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
-  { url: `${base}/agenda`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
+  { url: `${base}/lp/performance`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
 ] as const
 
   const postRoutes = getAllPosts().map(p => ({
