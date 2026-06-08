@@ -4,6 +4,10 @@ function json(data: any, status = 200) {
   return NextResponse.json(data, { status });
 }
 
+function isValidEmail(email: string) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
@@ -46,6 +50,20 @@ export async function POST(req: Request) {
     // ✅ regra: precisa ter nome/empresa/whatsapp/objetivo e (faturamento OU numero alunos)
     if (!nome || !empresa || !whatsapp || !objetivo || (!faturamento && !numeroAlunos)) {
       return json({ ok: false, error: "Missing required fields." }, 400);
+    }
+
+    if (whatsapp.replace(/\D/g, "").length < 8) {
+      return json({ ok: false, error: "Invalid phone." }, 400);
+    }
+
+    if (body.aba_planilha === "Leads LG") {
+      const email = String(body.email || "").trim();
+      const cidade = String(body.cidade || body.cidade_uf || "").trim();
+      const descricao = String(body.descricao || body.objetivo || "").trim();
+
+      if (!email || !isValidEmail(email) || !cidade || !descricao) {
+        return json({ ok: false, error: "Invalid LG lead fields." }, 400);
+      }
     }
 
     const forwardedFor = req.headers.get("x-forwarded-for") || "";
