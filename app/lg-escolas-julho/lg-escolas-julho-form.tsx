@@ -34,6 +34,8 @@ const successMessage =
 const errorMessage =
   "Não foi possível enviar sua solicitação agora. Tente novamente em instantes ou revise os dados preenchidos."
 
+const requiredFieldsMessage = "Preencha todos os campos obrigatórios."
+
 function isValidEmail(email: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
 }
@@ -58,6 +60,7 @@ function getTrackingValue(key: string) {
 export function LgEscolasJulhoForm() {
   const [values, setValues] = useState<FormValues>(initialValues)
   const [submitState, setSubmitState] = useState<SubmitState>("idle")
+  const [statusMessage, setStatusMessage] = useState("")
 
   const updateField = (field: keyof FormValues, value: string) => {
     setValues((current) => ({ ...current, [field]: value }))
@@ -66,6 +69,7 @@ export function LgEscolasJulhoForm() {
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     setSubmitState("loading")
+    setStatusMessage("")
 
     const lead = {
       nome: values.nome.trim(),
@@ -81,11 +85,18 @@ export function LgEscolasJulhoForm() {
       !lead.email ||
       !lead.telefone ||
       !lead.escola ||
-      !lead.cidade ||
-      !lead.descricao ||
+      !lead.cidade
+    ) {
+      setStatusMessage(requiredFieldsMessage)
+      setSubmitState("error")
+      return
+    }
+
+    if (
       !isValidEmail(lead.email) ||
       !hasValidTelefone(lead.telefone)
     ) {
+      setStatusMessage(errorMessage)
       setSubmitState("error")
       return
     }
@@ -134,8 +145,10 @@ export function LgEscolasJulhoForm() {
       }
 
       setValues(initialValues)
+      setStatusMessage(successMessage)
       setSubmitState("success")
     } catch {
+      setStatusMessage(errorMessage)
       setSubmitState("error")
     }
   }
@@ -219,9 +232,8 @@ export function LgEscolasJulhoForm() {
         </div>
 
         <label className="grid gap-1.5 text-sm font-medium text-[#1d2a30]">
-          Descrição curta do que precisa
+          Descrição curta do que precisa (opcional)
           <Textarea
-            required
             name="descricao"
             value={values.descricao}
             onChange={(event) => updateField("descricao", event.target.value)}
@@ -249,14 +261,14 @@ export function LgEscolasJulhoForm() {
       {submitState === "success" && (
         <p className="mt-4 flex gap-2 rounded-md border border-emerald-200 bg-emerald-50 px-3 py-3 text-sm leading-6 text-emerald-900">
           <CheckCircle2 className="mt-0.5 size-4 shrink-0" />
-          <span>{successMessage}</span>
+          <span>{statusMessage || successMessage}</span>
         </p>
       )}
 
       {submitState === "error" && (
         <p className="mt-4 flex gap-2 rounded-md border border-red-200 bg-red-50 px-3 py-3 text-sm leading-6 text-red-900">
           <AlertCircle className="mt-0.5 size-4 shrink-0" />
-          <span>{errorMessage}</span>
+          <span>{statusMessage || errorMessage}</span>
         </p>
       )}
     </form>

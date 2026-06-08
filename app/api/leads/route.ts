@@ -46,9 +46,10 @@ export async function POST(req: Request) {
     const faturamento = String(body.faturamento_faixa || "").trim();
     const numeroAlunos = String(body.numero_alunos_faixa || "").trim();
     const objetivo = String(body.objetivo || "").trim();
+    const isLgLead = body.aba_planilha === "Leads LG";
 
     // ✅ regra: precisa ter nome/empresa/whatsapp/objetivo e (faturamento OU numero alunos)
-    if (!nome || !empresa || !whatsapp || !objetivo || (!faturamento && !numeroAlunos)) {
+    if (!isLgLead && (!nome || !empresa || !whatsapp || !objetivo || (!faturamento && !numeroAlunos))) {
       return json({ ok: false, error: "Missing required fields." }, 400);
     }
 
@@ -56,12 +57,11 @@ export async function POST(req: Request) {
       return json({ ok: false, error: "Invalid phone." }, 400);
     }
 
-    if (body.aba_planilha === "Leads LG") {
+    if (isLgLead) {
       const email = String(body.email || "").trim();
       const cidade = String(body.cidade || body.cidade_uf || "").trim();
-      const descricao = String(body.descricao || body.objetivo || "").trim();
 
-      if (!email || !isValidEmail(email) || !cidade || !descricao) {
+      if (!nome || !empresa || !whatsapp || !email || !isValidEmail(email) || !cidade) {
         return json({ ok: false, error: "Invalid LG lead fields." }, 400);
       }
     }
